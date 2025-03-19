@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dad6lj42o831l"]
+[gd_scene load_steps=5 format=3 uid="uid://dad6lj42o831l"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_d7n41"]
+[ext_resource type="PackedScene" uid="uid://7gok56jak6jr" path="res://scenes/entities/player/camera_controller.tscn" id="2_3bnka"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_etiws"]
 
@@ -16,3 +17,5 @@ mesh = SubResource("CapsuleMesh_etiws")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_lpp5h")
+
+[node name="CameraController" parent="." instance=ExtResource("2_3bnka")]

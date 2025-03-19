@@ -84,3 +84,7 @@ collisionshape3d > inspector > shape > click on boxshape/capsule… (la size doi
 ============
 
 project > project settings > input map
+
+============
+
+camera une scene à part
