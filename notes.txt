@@ -49,3 +49,10 @@ rotation edit mode (different way to rotate in 3d spaces)
 ============
 
 CSG nodes = constructive node geometry
+
+CSGSphere3D > inspector > radius (taille)
+
+CSGSphere3D > inspector > radial segment
+CSGSphere3D > inspector > rings
+
+increase them pour que la sphere ai plus de vertices et deviens plus "sphérique"

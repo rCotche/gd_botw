@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2tsqexqlhs7u"]
+[gd_scene load_steps=5 format=3 uid="uid://2tsqexqlhs7u"]
 
 [ext_resource type="Texture2D" uid="uid://c36yvunt10jd3" path="res://graphics/grid/Light/texture_07.png" id="1_ttm48"]
 
@@ -10,7 +10,24 @@ albedo_texture = ExtResource("1_ttm48")
 material = SubResource("StandardMaterial3D_lphcs")
 size = Vector3(2, 1, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aps8p"]
+albedo_color = Color(0.819608, 0.129412, 0.0705882, 1)
+metallic = 0.75
+roughness = 0.25
+
 [node name="Level" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73665, 0, 0)
 mesh = SubResource("BoxMesh_cltcd")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7841, 0, 0)
+radial_segments = 25
+rings = 25
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.781063, 0.624452, 0, -0.624452, 0.781063, 0, 0.660413, 0)
+sides = 20
+ring_sides = 20
+material = SubResource("StandardMaterial3D_aps8p")
