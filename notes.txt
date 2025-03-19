@@ -1,0 +1,51 @@
+mddle mouse button = rotate
+mddl mouse btn + ctrl = zoom in/out
+mddl mouse btn + shift = déplacer
+
+============
+
+look good il faut réfléchir à = lights camera environnement shader particle
+
+============
+
+uv texture permet de savoir où la couleur sera sur le model
+
+============
+
+gltf & glb
+
+============
+
+meshinstance3d > inspector > mesh > new boxmesh
+
+perspective > display wireframe	
+meshinstance3d > inspector > mesh > click boxmesh : subdivide width; height; depth; ajoute des vertices au mesh
+
+meshinstance3d > inspector > mesh > click boxmesh > material > liste deroulante
+standard material : most use = define colors, reflection, transparency…
+
+meshinstance3d > inspector > mesh > click boxmesh > material > liste deroulante > new standard material > click material >
+albedo (pour simplifier c(est ici pour changer la couleur)
+
+meshinstance3d > inspector > mesh > click boxmesh > material > liste deroulante > new standard material > click material >
+metallic (how metallic your object going to look)
+
+meshinstance3d > inspector > mesh > click boxmesh > material > liste deroulante > new standard material > click material >
+uv (is how 2d texture is applied to a 3d abject)
+
+============
+
+omnilight3d : une ampoule ou une bougie
+hold shift to position with more precision
+
+omnilight3d > inspector > light > color
+
+============
+
+meshinstance3d > inspector > transform (pour la position et la rotation)
+
+rotation edit mode (different way to rotate in 3d spaces)
+
+============
+
+CSG nodes = constructive node geometry
