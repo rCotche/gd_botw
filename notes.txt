@@ -71,3 +71,16 @@ couleur du material + couleur de la light (par exemple le soleil) va impacter l'
 
 add sun to scene
 add environnement to scene
+
+============
+comme en 2d il doit avoir une collision
+characterbody3d
+
+collisionshape3d > inspector > shape > new capsule shape
+
+
+collisionshape3d > inspector > shape > click on boxshape/capsule… (la size doit être le même que celui du mesh ou du csg)
+
+============
+
+project > project settings > input map
