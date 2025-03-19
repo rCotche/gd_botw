@@ -56,3 +56,18 @@ CSGSphere3D > inspector > radial segment
 CSGSphere3D > inspector > rings
 
 increase them pour que la sphere ai plus de vertices et deviens plus "sphérique"
+
+============
+
+obliger d'avoir une caméra 3d pour qu'on puisse voir qlq chose lorsqu'on lance le jeu
+
+============
+
+en haut au niveau des icone pour rotate, scale, select… les 2 derniers icones sont pour le soleil et l'environnement. click sur les 3 points pour modifier les parametres
+
+couleur du material + couleur de la light (par exemple le soleil) va impacter l'aspect de l'object
+
+(textures, light, shadows, environnement)
+
+add sun to scene
+add environnement to scene
