@@ -103,3 +103,13 @@ camera3d > inspector > transform > position reset
 camera3d > inspector > transform > rotation reset
 
 il faut offset la position de la camera dans les scene ou elle est utilise
+
+============
+
+les 3d modele gltf/glb sont converti en scene
+
+db click on the file > tab scene il ya un meshinstance > l'actual mesh
+db click on the file > tab mesh il le mesh et le material assigned
+db click on the file > tab material il y a le material lui mm
+
+db click on the file > tab scene > select an animation > à droite save to file > enabled (pour ajouter mes stuff, exemple appeler une methode mid animation) > keep custom track > enabled
