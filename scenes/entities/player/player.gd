@@ -47,6 +47,8 @@ func move_logic(delta: float) -> void:
 		#2.3 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
+		$GodetteSkin/AnimationPlayer.current_animation = 'Running_B'
+		
 	#3 pas de input
 	else:
 		#permet de ralentir le perso lorsqu'il y a pas d'input
@@ -57,6 +59,7 @@ func move_logic(delta: float) -> void:
 		#3.2 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
+		$GodetteSkin/AnimationPlayer.current_animation = 'Idle'
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
