@@ -12,7 +12,7 @@ extends CharacterBody3D
 
 #@export var base_speed: float = 4.0
 @export var base_speed := 4.0
-@export var run_speed := 6.0
+@export var run_speed := 15.0
 
 var movement_input := Vector2.ZERO
 
@@ -31,13 +31,18 @@ func move_logic(delta: float) -> void:
 	#1. Current movement speed du player
 	var velocity_2d := Vector2(velocity.x, velocity.z)
 	
+	var is_running:bool = Input.is_action_pressed("run")
+	
 	#2. est ce que il y a un input
 	if movement_input != Vector2.ZERO:
+		
+		var speed = run_speed if is_running else base_speed
+		
 		#2.1 slowly accelerating from iur current speed vers la direction de l'input
-		velocity_2d += movement_input * base_speed * delta
+		velocity_2d += movement_input * speed * delta
 		#tous les vecteur ont la fonction limit_length
 		#2.2 set a maximum speed
-		velocity_2d = velocity_2d.limit_length(base_speed)
+		velocity_2d = velocity_2d.limit_length(speed)
 		#Rappel velocity c'est un vecteur 3d
 		#2.3 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
