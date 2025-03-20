@@ -19,3 +19,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_lpp5h")
 
 [node name="CameraController" parent="." instance=ExtResource("2_3bnka")]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.5, 0)
+min_limit_x = -0.8
+max_limit_x = -0.2

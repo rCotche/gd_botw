@@ -88,3 +88,18 @@ project > project settings > input map
 ============
 
 camera une scene à part
+
+============
+
+"start from the center then trie to push the camera at a certain distance"
+
+springarm3d > inspector > shape > new sphereshape3d
+
+springarm3d > inspector > spring lenght > 6.5
+
+reset the transform settings
+
+camera3d > inspector > transform > position reset
+camera3d > inspector > transform > rotation reset
+
+il faut offset la position de la camera dans les scene ou elle est utilise
