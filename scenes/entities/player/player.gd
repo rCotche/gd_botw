@@ -10,6 +10,8 @@ extends CharacterBody3D
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 # source: https://youtu.be/IOe1aGY6hXA?feature=shared
 
+@onready var skin = $GodetteSkin
+
 #@export var base_speed: float = 4.0
 @export var base_speed := 4.0
 @export var run_speed := 15.0
@@ -47,13 +49,13 @@ func move_logic(delta: float) -> void:
 		#2.3 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
-		$GodetteSkin.set_move_state('Running')
+		skin.set_move_state('Running')
 		
 		#rotate godette model
 		#movement_input.angle() est en radian
 		var target_angle = -movement_input.angle() + PI/2
 		#rotate_toward (rotation de départ, rotation que l'on souhaite, temps)
-		$GodetteSkin.rotation.y = rotate_toward($GodetteSkin.rotation.y, target_angle, 6.0 * delta)
+		skin.rotation.y = rotate_toward(skin.rotation.y, target_angle, 6.0 * delta)
 		
 	#3 pas de input
 	else:
@@ -65,11 +67,13 @@ func move_logic(delta: float) -> void:
 		#3.2 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
-		$GodetteSkin.set_move_state('Idle')
+		skin.set_move_state('Idle')
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_velocity
+	else:
+		skin.set_move_state('Jump_Idle')
 	var gravity = jump_gravity if velocity.y > 0.0 else fall_gravity
 	velocity.y -= gravity * delta
