@@ -138,5 +138,11 @@ ensuite
 en bas au niveau du terminal > animation tree tab > conection mode > transition intermediate > long click (hold click) start to idle for example
 ensuite
 en bas au niveau du terminal > animation tree tab > selection mode enabled > click on the connection > inspector > advance > mode > enable (la transition peut maintenant être contrôler via code)
+ensuite
+en bas au niveau du terminal > animation tree tab > selection mode enabled > click on the connection > inspector > xfade time (smooth transition between animation)
 
 en bas au niveau du terminal > animation tree tab > selection mode enabled > click on the connection > press del (supprime la connection)
+
+============
+
+inspector > clique droit sur la propriété > copy property path

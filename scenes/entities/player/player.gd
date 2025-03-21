@@ -47,7 +47,7 @@ func move_logic(delta: float) -> void:
 		#2.3 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
-		$GodetteSkin/AnimationPlayer.current_animation = 'Running_B'
+		$GodetteSkin.set_move_state('Running')
 		
 		#rotate godette model
 		#movement_input.angle() est en radian
@@ -65,7 +65,7 @@ func move_logic(delta: float) -> void:
 		#3.2 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
-		$GodetteSkin/AnimationPlayer.current_animation = 'Idle'
+		$GodetteSkin.set_move_state('Idle')
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
