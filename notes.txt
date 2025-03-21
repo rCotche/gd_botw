@@ -4,6 +4,8 @@ mddl mouse btn + shift = déplacer
 
 ctrl + click gauche
 
+For making sure objects are hitting the ground. Lift the object above the floor and press page down. It will snap it to the floor. It will look for the first collision below it.
+
 ============
 
 look good il faut réfléchir à = lights camera environnement shader particle
@@ -131,7 +133,7 @@ animationtree > inspector > animation player
 
 animationtree > inspector > animation player > drag & drop animation player
 ensuite
-animationtree > inspector > tree root > new animation state machine
+animationtree > inspector > tree root > new animation node state machine
 
 en bas au niveau du terminal > animation tree tab > selection mode enabled > right click > add animation (on peut rename the animations avec db clicik)
 ensuite
@@ -146,3 +148,28 @@ en bas au niveau du terminal > animation tree tab > selection mode enabled > cli
 ============
 
 inspector > clique droit sur la propriété > copy property path
+
+============
+
+en bas au niveau du terminal > animation tree tab > conection mode > 1h attack to running > inspector > switch > switch mode > at the end (to play it just once)
+
+============
+
+select animationtree > inspector > tree root > new animation node blend tree
+
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > animation > click sur le logo animation () > select animation > connect animation to output avec les points (hold click)
+
+en bas au niveau du terminal > animation tree tab > en haut de la tab il y a le path (pour revenir je clique sur root)
+
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > state machine > click open editor
+ensuite
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > one shot > connect state machine to one shot ("in" point) > one shot to output
+ensuite
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > animation > connect animation to one shot ("shot" point)
+# play animation attack ("shot" point) once then go back to state machine ("in" point)
+ensuite
+en bas au niveau du terminal > animation tree tab > one shot node selected > inspector > fade in time 0.2
+ensuite
+en bas au niveau du terminal > animation tree tab > one shot node selected > inspector > fade out time 0.2
+
+============

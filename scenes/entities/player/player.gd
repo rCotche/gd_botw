@@ -23,9 +23,8 @@ var movement_input := Vector2.ZERO
 #basic movement influence by a camera
 func _physics_process(delta: float) -> void:
 	move_logic(delta)
-	#jump
 	jump_logic(delta)
-	
+	ability_logic()
 	move_and_slide()
 
 func move_logic(delta: float) -> void:
@@ -77,3 +76,8 @@ func jump_logic(delta: float) -> void:
 		skin.set_move_state('Jump_Idle')
 	var gravity = jump_gravity if velocity.y > 0.0 else fall_gravity
 	velocity.y -= gravity * delta
+
+func ability_logic() -> void:
+	if Input.is_action_just_pressed("ability"):
+		skin.attack()
+#
