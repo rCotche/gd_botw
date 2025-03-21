@@ -49,6 +49,12 @@ func move_logic(delta: float) -> void:
 		velocity.z = velocity_2d.y
 		$GodetteSkin/AnimationPlayer.current_animation = 'Running_B'
 		
+		#rotate godette model
+		#movement_input.angle() est en radian
+		var target_angle = -movement_input.angle() + PI/2
+		#rotate_toward (rotation de départ, rotation que l'on souhaite, temps)
+		$GodetteSkin.rotation.y = rotate_toward($GodetteSkin.rotation.y, target_angle, 6.0 * delta)
+		
 	#3 pas de input
 	else:
 		#permet de ralentir le perso lorsqu'il y a pas d'input

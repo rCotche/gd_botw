@@ -2,6 +2,8 @@ mddle mouse button = rotate
 mddl mouse btn + ctrl = zoom in/out
 mddl mouse btn + shift = déplacer
 
+ctrl + click gauche
+
 ============
 
 look good il faut réfléchir à = lights camera environnement shader particle
@@ -117,3 +119,24 @@ db click on the file > tab scene > select an animation > à droite save to file 
 ============
 
 godette modele > animation > idle > loop mode > linear > reimport
+
+============
+
+transition entre les différentes animations
+animationTree
+
+animationtree > inspector > tree root
+animationtree > inspector > advance expression
+animationtree > inspector > animation player
+
+animationtree > inspector > animation player > drag & drop animation player
+ensuite
+animationtree > inspector > tree root > new animation state machine
+
+en bas au niveau du terminal > animation tree tab > selection mode enabled > right click > add animation (on peut rename the animations avec db clicik)
+ensuite
+en bas au niveau du terminal > animation tree tab > conection mode > transition intermediate > long click (hold click) start to idle for example
+ensuite
+en bas au niveau du terminal > animation tree tab > selection mode enabled > click on the connection > inspector > advance > mode > enable (la transition peut maintenant être contrôler via code)
+
+en bas au niveau du terminal > animation tree tab > selection mode enabled > click on the connection > press del (supprime la connection)
