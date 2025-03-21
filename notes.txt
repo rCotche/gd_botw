@@ -180,3 +180,16 @@ ensuite
 boneattachement3d selected > drag and drop sword model (as a child)
 
 click on sword model > click droit > editable children > select mesh > inspector > surface material override > drag & drop texture png file
+
+============
+
+en bas au niveau du terminal > animation tree tab > one shot node selected > edit filters > select the bones that i want to keep playing the animation (play part of animation)
+
+si la valeur est 0 joue l'animation ("in" point)
+si la valeur est 1 joue l'animation ("blend" point)
+si la valeur est 0.5 joue un mix des 2 animations
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > blend2
+ensuite
+en bas au niveau du terminal > animation tree tab > select mode > connect state machine to blend2 node ("in" point) > blend2 to one shot
+ensuite
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > animation > connect animation to blend2 ("blend" point)

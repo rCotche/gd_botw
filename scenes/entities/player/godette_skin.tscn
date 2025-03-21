@@ -1,17 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://8jpm4qow1ijh"]
+[gd_scene load_steps=21 format=3 uid="uid://8jpm4qow1ijh"]
 
 [ext_resource type="PackedScene" uid="uid://bctcp65yp8t3f" path="res://graphics/characters/godette/godette.glb" id="1_bauuy"]
 [ext_resource type="Script" path="res://scenes/entities/player/godette_skin.gd" id="2_fwrw7"]
 [ext_resource type="PackedScene" uid="uid://cp757r6txb0j6" path="res://graphics/weapons/sword_1handed.gltf" id="3_gej6a"]
-[ext_resource type="Texture2D" uid="uid://cbf5176yt1e2d" path="res://graphics/weapons/barbarian_texture.png" id="4_r4ljt"]
+[ext_resource type="PackedScene" uid="uid://dydnnq3ww2uyk" path="res://graphics/weapons/shield.gltf.glb" id="5_fi51e"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6q3p"]
-albedo_texture = ExtResource("4_r4ljt")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0rhg"]
+animation = &"Block"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_usnfx"]
 animation = &"1H_Melee_Attack_Chop"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_dfj1a"]
+filter_enabled = true
+filters = ["Rig/Skeleton3D:chest", "Rig/Skeleton3D:hand.l", "Rig/Skeleton3D:hand.r", "Rig/Skeleton3D:handslot.l", "Rig/Skeleton3D:handslot.r", "Rig/Skeleton3D:head", "Rig/Skeleton3D:hips", "Rig/Skeleton3D:lowerarm.l", "Rig/Skeleton3D:lowerarm.r", "Rig/Skeleton3D:root", "Rig/Skeleton3D:spine", "Rig/Skeleton3D:upperarm.l", "Rig/Skeleton3D:upperarm.r", "Rig/Skeleton3D:wrist.l", "Rig/Skeleton3D:wrist.r"]
 fadein_time = 0.2
 fadeout_time = 0.2
 
@@ -56,16 +58,22 @@ states/Running/position = Vector2(660.5, 100.75)
 states/Start/position = Vector2(199.5, 101.5)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qt2a8"), "Idle", "Running", SubResource("AnimationNodeStateMachineTransition_brs83"), "Running", "Idle", SubResource("AnimationNodeStateMachineTransition_wtgpo"), "Idle", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_kjowl"), "Jump_Idle", "Idle", SubResource("AnimationNodeStateMachineTransition_rrd8n"), "Running", "Jump_Idle", SubResource("AnimationNodeStateMachineTransition_xpvpl"), "Jump_Idle", "Running", SubResource("AnimationNodeStateMachineTransition_yqjt2")]
 
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_iw0ov"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5wskp"]
-graph_offset = Vector2(40, 17.35)
+graph_offset = Vector2(-138.699, -126.274)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_v0rhg")
+nodes/Animation/position = Vector2(120, 80)
 nodes/AttackAnimation/node = SubResource("AnimationNodeAnimation_usnfx")
-nodes/AttackAnimation/position = Vector2(170, 280)
+nodes/AttackAnimation/position = Vector2(440, 200)
 nodes/AttackOneShot/node = SubResource("AnimationNodeOneShot_dfj1a")
-nodes/AttackOneShot/position = Vector2(460, 180)
+nodes/AttackOneShot/position = Vector2(810, 70)
 nodes/MoveStateMachine/node = SubResource("AnimationNodeStateMachine_72mpw")
-nodes/MoveStateMachine/position = Vector2(210, 110)
-nodes/output/position = Vector2(680, 130)
-node_connections = [&"AttackOneShot", 0, &"MoveStateMachine", &"AttackOneShot", 1, &"AttackAnimation", &"output", 0, &"AttackOneShot"]
+nodes/MoveStateMachine/position = Vector2(70, -80)
+nodes/ShieldBlend/node = SubResource("AnimationNodeBlend2_iw0ov")
+nodes/ShieldBlend/position = Vector2(460, -80)
+nodes/output/position = Vector2(1190, 80)
+node_connections = [&"AttackOneShot", 0, &"ShieldBlend", &"AttackOneShot", 1, &"AttackAnimation", &"ShieldBlend", 0, &"MoveStateMachine", &"ShieldBlend", 1, &"Animation", &"output", 0, &"AttackOneShot"]
 
 [node name="GodetteSkin" instance=ExtResource("1_bauuy")]
 script = ExtResource("2_fwrw7")
@@ -109,8 +117,15 @@ bone_idx = 13
 
 [node name="sword_1handed2" parent="Rig/Skeleton3D/RightHandSlot" index="0" instance=ExtResource("3_gej6a")]
 
-[node name="sword_1handed" parent="Rig/Skeleton3D/RightHandSlot/sword_1handed2" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_b6q3p")
+[node name="LeftHandSlot" type="BoneAttachment3D" parent="Rig/Skeleton3D" index="7"]
+transform = Transform3D(-0.999999, -4.90742e-07, -3.97706e-07, -4.08043e-07, -4.978e-07, 0.999999, -4.7957e-07, 0.999999, 5.04239e-07, 0.883132, 1.04926, -6.78319e-07)
+bone_name = "handslot.l"
+bone_idx = 8
+
+[node name="shield_gltf" parent="Rig/Skeleton3D/LeftHandSlot" index="0" instance=ExtResource("5_fi51e")]
+
+[node name="shield" parent="Rig/Skeleton3D/LeftHandSlot/shield_gltf" index="0"]
+transform = Transform3D(1, -5.68434e-14, -2.00784e-14, 0, 1, 0, -1.13563e-14, 5.68434e-14, 1, 0, 0, 0.13)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"
@@ -121,5 +136,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/AttackOneShot/active = false
 parameters/AttackOneShot/internal_active = false
 parameters/AttackOneShot/request = 0
+parameters/ShieldBlend/blend_amount = 0
 
 [editable path="Rig/Skeleton3D/RightHandSlot/sword_1handed2"]
+[editable path="Rig/Skeleton3D/LeftHandSlot/shield_gltf"]
