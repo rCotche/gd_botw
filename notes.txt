@@ -173,3 +173,10 @@ ensuite
 en bas au niveau du terminal > animation tree tab > one shot node selected > inspector > fade out time 0.2
 
 ============
+
+add weapon to godette
+skeleton3d selected > boneattachement3d node (as a child) > inspector > bone name > "handslot.r"
+ensuite
+boneattachement3d selected > drag and drop sword model (as a child)
+
+click on sword model > click droit > editable children > select mesh > inspector > surface material override > drag & drop texture png file
