@@ -11,9 +11,9 @@ func attack() -> void:
 	#$AnimationTree.set("parameters/AttackOneShot/request", true) #mm chose
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
-func defend() -> void:
+func defend(forward: bool) -> void:
 	var tween = create_tween()
-	tween.tween_method(_defend_change, 1.0 - float(forward), float(forward), 0)
+	tween.tween_method(_defend_change, 1.0 - float(forward), float(forward), 0.25)
 
 func _defend_change(value: bool) -> void:
 	$AnimationTree.set("parameters/ShieldBlend/blend_amount", value)
