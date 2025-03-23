@@ -223,3 +223,9 @@ en bas au niveau du terminal > animation tree tab > connection mode enabled > tr
 
 il y a pas de transition entre 2 node oneshot
 pour avoir une trasition il faudrait un blend2 node
+
+============
+
+qd on veut que le movement a plus d'impact les animateurs stretch the model
+
+3:16:24 explanation

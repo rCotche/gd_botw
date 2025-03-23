@@ -8,6 +8,12 @@ extends Node3D
 	#print(extra_animation)
 
 var attacking := false
+var squash_and_stretch := 1.0:
+	set(value):
+		squash_and_stretch = value
+		#3:16:24
+		var negative  = 1.0 + (1.0 - squash_and_stretch)
+		scale = Vector3(negative,squash_and_stretch,negative)
 
 func set_move_state(state_name: String) -> void:
 	move_state_machine.travel(state_name)

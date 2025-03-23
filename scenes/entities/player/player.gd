@@ -16,6 +16,7 @@ extends CharacterBody3D
 @export var base_speed := 4.0
 @export var run_speed := 8.0
 @export var defend_speed := 2.0
+var speed_modifier := 1.0
 
 var movement_input := Vector2.ZERO
 var defend := false:
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	jump_logic(delta)
 	ability_logic()
 	if Input.is_action_just_pressed("ui_accept"):
-		skin.hit()
+		hit()
 	move_and_slide()
 
 func move_logic(delta: float) -> void:
@@ -56,10 +57,10 @@ func move_logic(delta: float) -> void:
 		speed = defend_speed if defend else speed
 		
 		#2.1 slowly accelerating from iur current speed vers la direction de l'input
-		velocity_2d += movement_input * speed * delta
+		velocity_2d += movement_input * speed * delta * 8.0
 		#tous les vecteur ont la fonction limit_length
 		#2.2 set a maximum speed
-		velocity_2d = velocity_2d.limit_length(speed)
+		velocity_2d = velocity_2d.limit_length(speed) * speed_modifier
 		#Rappel velocity c'est un vecteur 3d
 		#2.3 updating velocity to get a new movement speed
 		velocity.x = velocity_2d.x
@@ -88,6 +89,7 @@ func jump_logic(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_velocity
+			do_squash_and_stretch(1.2, 0.15)
 	else:
 		skin.set_move_state('Jump_Idle')
 	var gravity = jump_gravity if velocity.y > 0.0 else fall_gravity
@@ -100,6 +102,7 @@ func ability_logic() -> void:
 			skin.attack()
 		else:
 			skin.spell_cast()
+			stop_movement(0.3,0.8)
 	
 	#defend/block
 	defend = Input.is_action_pressed("block")
@@ -108,4 +111,19 @@ func ability_logic() -> void:
 	if Input.is_action_just_pressed("switch weapon") and not skin.attacking:
 		weapon_active = not weapon_active
 		skin.switch_weapon(weapon_active)
+		do_squash_and_stretch(1.2, 0.15)
+
+func stop_movement(start_duration: float, end_duration: float) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "speed_modifier", 0.0, start_duration)
+	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
+
+func hit() -> void:
+	skin.hit()
+	stop_movement(0.3,0.3)
+
+func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
+	var tween = create_tween()
+	tween.tween_property(skin, "squash_and_stretch", value, duration)
+	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
 #
