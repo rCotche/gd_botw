@@ -229,3 +229,13 @@ pour avoir une trasition il faudrait un blend2 node
 qd on veut que le movement a plus d'impact les animateurs stretch the model
 
 3:16:24 explanation
+
+============
+
+godette skin > mesh godette head > inspector > mesh > click on mesh > surface 0 > click on material > uv 1 ???
+
+godette skin > mesh godette head > inspector > surface material override > 0 > drag and drop texture > click on material > uv 1 > offset (change de 0.5 les values x, y)
+
+============
+
+worldenvironment > inpector > environnement > click on environnement > sky > click on material > procedural sky > click on material > sky > top color (sky color) 
