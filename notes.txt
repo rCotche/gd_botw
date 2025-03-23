@@ -195,3 +195,9 @@ ensuite
 en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > animation > connect animation to blend2 ("blend" point)
 ensuite
 en bas au niveau du terminal > animation tree tab > blend2 node selected > edit filters > enable filtering > select the bones that i want to keep playing the animation (play part of animation) > fill selected children pour aller plus vite
+
+============
+
+Pour ajouter un custom track pour l'animation
+
+db click on the file > tab scene > select an animation > à droite save to file > enabled (pour ajouter mes stuff, exemple appeler une methode mid animation) > keep custom track > enabled

@@ -47,6 +47,7 @@ func move_logic(delta: float) -> void:
 	if movement_input != Vector2.ZERO:
 		
 		var speed = run_speed if is_running else base_speed
+		#while blocking le player est plus lent
 		speed = defend_speed if defend else speed
 		
 		#2.1 slowly accelerating from iur current speed vers la direction de l'input
