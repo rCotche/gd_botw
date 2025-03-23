@@ -27,6 +27,9 @@ var defend := false:
 			skin.defend(false)
 		defend = value
 
+#sword ou wand
+var weapon_active := false
+
 @onready var camera = $CameraController/Camera3D
 
 #basic movement influence by a camera
@@ -89,7 +92,15 @@ func jump_logic(delta: float) -> void:
 	velocity.y -= gravity * delta
 
 func ability_logic() -> void:
+	#actual attack
 	if Input.is_action_just_pressed("ability"):
 		skin.attack()
+	
+	#defend/block
 	defend = Input.is_action_pressed("block")
+	
+	#switch weapon/magic
+	if Input.is_action_just_pressed("switch weapon") and not skin.attacking:
+		weapon_active = not weapon_active
+		skin.switch_weapon(weapon_active)
 #

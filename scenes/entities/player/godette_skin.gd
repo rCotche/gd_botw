@@ -25,3 +25,11 @@ func defend(forward: bool) -> void:
 
 func _defend_change(value: bool) -> void:
 	$AnimationTree.set("parameters/ShieldBlend/blend_amount", value)
+
+func switch_weapon(weapon_active: bool) -> void:
+	if weapon_active:
+		$Rig/Skeleton3D/RightHandSlot/sword_1handed2.show()
+		$Rig/Skeleton3D/RightHandSlot/wand2.hide()
+	else:
+		$Rig/Skeleton3D/RightHandSlot/sword_1handed2.hide()
+		$Rig/Skeleton3D/RightHandSlot/wand2.show()
