@@ -199,5 +199,22 @@ en bas au niveau du terminal > animation tree tab > blend2 node selected > edit 
 ============
 
 Pour ajouter un custom track pour l'animation
-
 db click on the file > tab scene > select an animation > à droite save to file > enabled (pour ajouter mes stuff, exemple appeler une methode mid animation) > keep custom track > enabled
+
+en bas au niveau du terminal > animation tree tab > one shot node selected > edit filters > enable functions (tout en bas)
+
+============
+
+Pour faire des combos
+
+attackstatemachine
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > state machine > connect state machine to one shot ("shot" point)
+ensuite
+en bas au niveau du terminal > animation tree tab > select state machine > open editor
+ensuite
+en bas au niveau du terminal > animation tree tab > selection mode enabled > click droit > add animation (les animations du combo)
+ensuite
+en bas au niveau du terminal > animation tree tab > connection mode enabled > transition intermediate > (à cote de la liste deroulante) deactivate auto > long click (hold click)
+
+si je souhaite que mon animation ne joue qu'une seule fois, je dois les connecter au node end
+en bas au niveau du terminal > animation tree tab > connection mode enabled > transition at the end > long click (hold click)
