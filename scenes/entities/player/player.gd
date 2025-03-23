@@ -37,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	move_logic(delta)
 	jump_logic(delta)
 	ability_logic()
+	if Input.is_action_just_pressed("ui_accept"):
+		skin.hit()
 	move_and_slide()
 
 func move_logic(delta: float) -> void:
@@ -94,7 +96,10 @@ func jump_logic(delta: float) -> void:
 func ability_logic() -> void:
 	#actual attack
 	if Input.is_action_just_pressed("ability"):
-		skin.attack()
+		if weapon_active:
+			skin.attack()
+		else:
+			skin.spell_cast()
 	
 	#defend/block
 	defend = Input.is_action_pressed("block")

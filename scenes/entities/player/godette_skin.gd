@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var move_state_machine = $AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var attack_state_machine = $AnimationTree.get("parameters/AttackStateMachine/playback")
+@onready var extra_animation = $AnimationTree.get_tree_root().get_node("ExtraAnimation")
+
+#func _ready() -> void:
+	#print(extra_animation)
 
 var attacking := false
 
@@ -33,3 +37,17 @@ func switch_weapon(weapon_active: bool) -> void:
 	else:
 		$Rig/Skeleton3D/RightHandSlot/sword_1handed2.hide()
 		$Rig/Skeleton3D/RightHandSlot/wand2.show()
+
+func spell_cast() -> void:
+	if not attacking:
+		#change the extra animation to spellcast shoot
+		extra_animation.animation = "Spellcast_Shoot"
+		$AnimationTree.set("parameters/ExtraOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+func hit() -> void:
+	#change the extra animation to hit_A
+	extra_animation.animation = "Hit_A"
+	$AnimationTree.set("parameters/ExtraOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	#cancel attack animation
+	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+	attacking = false

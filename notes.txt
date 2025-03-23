@@ -218,3 +218,8 @@ en bas au niveau du terminal > animation tree tab > connection mode enabled > tr
 
 si je souhaite que mon animation ne joue qu'une seule fois, je dois les connecter au node end
 en bas au niveau du terminal > animation tree tab > connection mode enabled > transition at the end > long click (hold click)
+
+============
+
+il y a pas de transition entre 2 node oneshot
+pour avoir une trasition il faudrait un blend2 node
