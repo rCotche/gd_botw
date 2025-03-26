@@ -249,3 +249,8 @@ perspective > front view > center model
 ============
 
 Project project settings > 3d physics
+
+============
+
+si il y a un node animation tree alors la propriété speed scale de l'animation player n'est pas utilisé à la place on utilise 
+en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > TimeScale
