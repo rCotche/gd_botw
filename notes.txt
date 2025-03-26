@@ -238,4 +238,14 @@ godette skin > mesh godette head > inspector > surface material override > 0 > d
 
 ============
 
-worldenvironment > inpector > environnement > click on environnement > sky > click on material > procedural sky > click on material > sky > top color (sky color) 
+worldenvironment > inpector > environnement > click on environnement > sky > click on material > procedural sky > click on material > sky > top color (sky color)
+
+============
+
+scene > new inherited scene > 
+
+perspective > front view > center model
+
+============
+
+Project project settings > 3d physics
