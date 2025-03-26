@@ -1,4 +1,4 @@
 extends Enemy
 
-func _ready() -> void:
-	print(player)
+func _physics_process(delta: float) -> void:
+	move_to_player(delta)
