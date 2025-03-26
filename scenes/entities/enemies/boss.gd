@@ -6,6 +6,9 @@ const simple_attacks = {
 	'range' : '1H_Melee_Attack_Stab',
 	}
 
+@export var spin_speed := 6.0
+var spinning := false
+
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 
@@ -14,10 +17,23 @@ func _on_attack_timer_timeout() -> void:
 	if position.distance_to(player.position) < 5.0:
 		melee_attack_animation()
 	else:
-		range_attack_animation()
+		#range_attack_animation()
+		spin_attack_animation()
+
+func spin_attack_animation() -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "speed", spin_speed, 0.5)
+	tween.tween_method(_spin_transition, 0.0, 1.0, 0.3)
+	$Timers/AttackTimer.stop()
+	spinning = true
+
+func _spin_transition(value: float) -> void :
+	$AnimationTree.set("parameters/SpinBlend/blend_amount", value)
 
 func range_attack_animation() -> void:
-	pass
+	stop_movement(1.5,1.5)
+	attack_animation.animation = simple_attacks['range']
+	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func melee_attack_animation() -> void:
 	attack_animation.animation = simple_attacks['slice' if rng.randi() %2 else 'spin']

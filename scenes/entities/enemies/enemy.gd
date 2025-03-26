@@ -7,6 +7,8 @@ extends CharacterBody3D
 @onready var skin = get_node('skin')
 
 @export var walk_speed := 2.0
+@export var speed := walk_speed
+var speed_modifier := 1.0
 @export var notice_radius := 30.0
 @export var attack_radius := 3.0
 
@@ -24,10 +26,15 @@ func move_to_player(delta: float) -> void:
 		rotation.y = rotate_toward(rotation.y, target_angle, delta * 6.0)
 		if position.distance_to(player.position) > attack_radius:
 			#vitesse que l'enemie se dirige vers le joeur
-			velocity = Vector3(target_vec2.x, 0, target_vec2.y) * walk_speed
+			velocity = Vector3(target_vec2.x, 0, target_vec2.y) * speed * speed_modifier
 			move_state_machine.travel('walk')
 		else:
 			velocity = Vector3.ZERO
 			move_state_machine.travel('idle')
 		#move the enemy
 		move_and_slide()
+
+func stop_movement(start_duration: float, end_duration: float) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "speed_modifier", 0.0, start_duration)
+	tween.tween_property(self, "speed_modifier", 1.0, end_duration)

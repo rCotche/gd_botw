@@ -254,3 +254,11 @@ Project project settings > 3d physics
 
 si il y a un node animation tree alors la propriété speed scale de l'animation player n'est pas utilisé à la place on utilise 
 en bas au niveau du terminal > animation tree tab > (add nodes avec right click / add nodes) > TimeScale
+
+============
+
+pro tips
+
+stop movement at the begining of animation and restart it when the animation done
+db click on the file > tab scene > select an animation > à droite save to file > enabled (pour ajouter mes stuff, exemple appeler une methode mid animation) > keep custom track > enabled > reimport
+select animation player node > en bas au niveau du terminal > animation > add custom track > 
