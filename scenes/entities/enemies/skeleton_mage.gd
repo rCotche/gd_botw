@@ -1,5 +1,8 @@
 extends Enemy
 
+func _ready() -> void:
+	attack_radius = 10.0
+
 func _physics_process(delta: float) -> void:
 	move_to_player(delta)
 
@@ -9,5 +12,5 @@ func range_attack_animation() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	$Timers/AttackTimer.wait_time = rng.randf_range(4.0,5.5)
-	if position.distance_to(player.position) < 15.0:
+	if position.distance_to(player.position) < attack_radius:
 		range_attack_animation()
