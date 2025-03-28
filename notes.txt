@@ -266,3 +266,22 @@ select animation player node > en bas au niveau du terminal > animation > add cu
 ============
 
 scale colision shape avec le point rouge
+
+============
+
+use ray cast to detect collision with entities
+
+weapon ray cast player
+
+1er moyen
+
+area 3d
+puis
+mesh instance > en haut > mesh > create mesh > collision shape placement sibling > collision shape type trimesh
+puis drag le nouveau node collision shape dans le node area 3d (area3 devient le parent du node collision shape créer)
+
+2e moyen
+
+ray cast 3d > inspector > target position > y : 1.41 m (scale to le bout du sword) > collision mask
+
+every single frame le node cast check si il y a une collision ou pas

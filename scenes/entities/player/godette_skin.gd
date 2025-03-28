@@ -15,6 +15,7 @@ var squash_and_stretch := 1.0:
 		#3:16:24
 		var negative  = 1.0 + (1.0 - squash_and_stretch)
 		scale = Vector3(negative,squash_and_stretch,negative)
+
 const faces = {
 	'default': Vector3.ZERO,
 	'blink': Vector3(0,0.5,0),
@@ -46,10 +47,10 @@ func _defend_change(value: bool) -> void:
 
 func switch_weapon(weapon_active: bool) -> void:
 	if weapon_active:
-		$Rig/Skeleton3D/RightHandSlot/sword_1handed2.show()
+		$Rig/Skeleton3D/RightHandSlot/Sword.show()
 		$Rig/Skeleton3D/RightHandSlot/wand2.hide()
 	else:
-		$Rig/Skeleton3D/RightHandSlot/sword_1handed2.hide()
+		$Rig/Skeleton3D/RightHandSlot/Sword.hide()
 		$Rig/Skeleton3D/RightHandSlot/wand2.show()
 
 func spell_cast() -> void:
@@ -69,9 +70,11 @@ func hit() -> void:
 func change_face(expression: String) ->void:
 	face_material.uv1_offset = faces[expression]
 
-
 func _on_blink_timer_timeout() -> void:
 	change_face('blink')
 	await get_tree().create_timer(0.2).timeout
 	change_face('default')
 	$BlinkTimer.wait_time = rng.randf_range(1.5, 3.0)
+
+func can_damage(value: bool) -> void:
+	$Rig/Skeleton3D/RightHandSlot/Sword.can_damage = value

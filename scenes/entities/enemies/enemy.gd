@@ -38,3 +38,6 @@ func stop_movement(start_duration: float, end_duration: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "speed_modifier", 0.0, start_duration)
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
+
+func hit() -> void:
+	print("enemy was hit")

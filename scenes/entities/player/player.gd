@@ -29,9 +29,12 @@ var defend := false:
 		defend = value
 
 #sword ou wand
-var weapon_active := false
+var weapon_active := true
 
 @onready var camera = $CameraController/Camera3D
+
+func _ready() -> void:
+	skin.switch_weapon(weapon_active)
 
 #basic movement influence by a camera
 func _physics_process(delta: float) -> void:
