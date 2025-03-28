@@ -14,11 +14,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_attack_timer_timeout() -> void:
+	$Timers/AttackTimer.wait_time = rng.randf_range(4.0,5.5)
 	if position.distance_to(player.position) < 5.0:
 		melee_attack_animation()
 	else:
-		#range_attack_animation()
-		spin_attack_animation()
+		if rng.randi() %2:
+			range_attack_animation()
+		else:
+			spin_attack_animation()
 
 func spin_attack_animation() -> void:
 	var tween = create_tween()
@@ -38,3 +41,13 @@ func range_attack_animation() -> void:
 func melee_attack_animation() -> void:
 	attack_animation.animation = simple_attacks['slice' if rng.randi() %2 else 'spin']
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if spinning:
+		await get_tree().create_timer(rng.randf_range(1.0,2.0)).timeout
+		var tween = create_tween()
+		tween.tween_property(self, "speed", walk_speed, 0.5)
+		tween.tween_method(_spin_transition, 1.0, 0.0, 0.3)
+		spinning = false
+		$Timers/AttackTimer.start()
