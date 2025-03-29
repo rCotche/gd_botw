@@ -5,9 +5,6 @@ extends Node3D
 @onready var extra_animation = $AnimationTree.get_tree_root().get_node("ExtraAnimation")
 @onready var face_material: StandardMaterial3D = $Rig/Skeleton3D/Godette_Head.get_surface_override_material(0)
 
-#func _ready() -> void:
-	#print(extra_animation)
-
 var attacking := false
 var squash_and_stretch := 1.0:
 	set(value):

@@ -122,8 +122,11 @@ func stop_movement(start_duration: float, end_duration: float) -> void:
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
 
 func hit() -> void:
-	skin.hit()
-	stop_movement(0.3,0.3)
+	var timer = skin.get_node('InvulTimer')
+	if not timer.time_left:
+		skin.hit()
+		stop_movement(0.3,0.3)
+		timer.start()
 
 func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
 	var tween = create_tween()

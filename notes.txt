@@ -285,3 +285,7 @@ puis drag le nouveau node collision shape dans le node area 3d (area3 devient le
 ray cast 3d > inspector > target position > y : 1.41 m (scale to le bout du sword) > collision mask
 
 every single frame le node cast check si il y a une collision ou pas
+
+============
+
+animation player node selected > en bas au niveau du terminal > animation > add track > call function > select le node où il y a le script avec la fonction
