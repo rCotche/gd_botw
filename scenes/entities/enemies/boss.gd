@@ -71,3 +71,9 @@ func attack_logic() -> void:
 		var collider = $skin/Rig/Skeleton3D/Nagonford_Axe/Nagonford_Axe/RayCast3D.get_collider()
 		if collider and 'hit' in collider:
 			collider.hit()
+
+func shoot_fireball_boss() -> void:
+	var direction = (player.position - position).normalized()
+	var dir_2d = Vector2(direction.x, direction.z)
+	var pos = $skin/Rig/Skeleton3D/Nagonford_Axe/Nagonford_Axe/Marker3D.global_position
+	cast_spell.emit('fireball', pos, dir_2d, 3.0)

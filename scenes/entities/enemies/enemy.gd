@@ -19,6 +19,9 @@ var squash_and_stretch := 1.0:
 		#3:16:24
 		var negative  = 1.0 + (1.0 - squash_and_stretch)
 		skin.scale = Vector3(negative,squash_and_stretch,negative)
+var last_movement_input := Vector2(0,1)
+
+signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
 
 func move_to_player(delta: float) -> void:
 	if position.distance_to(player.position) < notice_radius:
@@ -34,6 +37,7 @@ func move_to_player(delta: float) -> void:
 			#vitesse que l'enemie se dirige vers le joeur
 			velocity = Vector3(target_vec2.x, 0, target_vec2.y) * speed * speed_modifier
 			move_state_machine.travel('walk')
+			last_movement_input = target_vec2
 		else:
 			velocity = Vector3.ZERO
 			move_state_machine.travel('idle')

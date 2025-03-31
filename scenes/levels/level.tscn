@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_j0wha"]
 [ext_resource type="PackedScene" uid="uid://dad6lj42o831l" path="res://scenes/entities/player/player.tscn" id="1_j7gkc"]
-[ext_resource type="PackedScene" uid="uid://q2ctoee5r2jh" path="res://scenes/entities/enemies/skeleton_mage.tscn" id="3_54na5"]
+[ext_resource type="PackedScene" uid="uid://c4muthinwqhdj" path="res://scenes/entities/enemies/boss.tscn" id="2_3bxau"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4dla3"]
 sky_top_color = Color(0.649389, 0.882781, 0.994202, 1)
@@ -39,7 +39,8 @@ shadow_enabled = true
 [node name="Player" parent="Entities" instance=ExtResource("1_j7gkc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6243, 0, -14.0875)
 
-[node name="Skeleton_mage" parent="Entities" instance=ExtResource("3_54na5")]
+[node name="Boss" parent="Entities" instance=ExtResource("2_3bxau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.774, 0, 12.3604)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -62,5 +63,3 @@ size = Vector3(10, 10, 1)
 shape = SubResource("BoxShape3D_3e53c")
 
 [node name="Projectiles" type="Node3D" parent="."]
-
-[connection signal="cast_spell" from="Entities/Player" to="." method="_on_player_cast_spell"]
