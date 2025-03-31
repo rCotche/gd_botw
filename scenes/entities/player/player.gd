@@ -33,6 +33,8 @@ var weapon_active := true
 
 @onready var camera = $CameraController/Camera3D
 
+signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
+
 func _ready() -> void:
 	skin.switch_weapon(weapon_active)
 
@@ -132,4 +134,6 @@ func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
 	var tween = create_tween()
 	tween.tween_property(skin, "squash_and_stretch", value, duration)
 	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
-#
+
+func shoot_fireball(pos: Vector3) ->void:
+	cast_spell.emit('fireball', pos, Vector2(0,1), 1.0)
