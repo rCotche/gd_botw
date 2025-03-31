@@ -16,8 +16,8 @@ extends CharacterBody3D
 @export var base_speed := 4.0
 @export var run_speed := 8.0
 @export var defend_speed := 2.0
-var speed_modifier := 1.0
 
+var speed_modifier := 1.0
 var movement_input := Vector2.ZERO
 var defend := false:
 	set(value):
@@ -27,10 +27,9 @@ var defend := false:
 		if defend and not value:
 			skin.defend(false)
 		defend = value
-
 #sword ou wand
 var weapon_active := true
-
+var last_movement_input := Vector2(0,1)
 @onready var camera = $CameraController/Camera3D
 
 signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
@@ -78,6 +77,7 @@ func move_logic(delta: float) -> void:
 		#rotate_toward (rotation de départ, rotation que l'on souhaite, temps)
 		skin.rotation.y = rotate_toward(skin.rotation.y, target_angle, 6.0 * delta)
 		
+		#last_movement_input = movement_input
 	#3 pas de input
 	else:
 		#permet de ralentir le perso lorsqu'il y a pas d'input
@@ -89,6 +89,8 @@ func move_logic(delta: float) -> void:
 		velocity.x = velocity_2d.x
 		velocity.z = velocity_2d.y
 		skin.set_move_state('Idle')
+	if movement_input:
+		last_movement_input = movement_input
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
@@ -136,4 +138,4 @@ func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
 	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
 
 func shoot_fireball(pos: Vector3) ->void:
-	cast_spell.emit('fireball', pos, Vector2(0,1), 1.0)
+	cast_spell.emit('fireball', pos, last_movement_input, 1.0)
