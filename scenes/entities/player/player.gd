@@ -38,6 +38,9 @@ var health: int = 5:
 		ui.update_health(value, value - health)
 		health = value
 
+enum spells {FIREBALL, HEAL}
+var current_spell = spells.FIREBALL
+
 signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
 
 func _ready() -> void:
@@ -126,6 +129,20 @@ func ability_logic() -> void:
 		weapon_active = not weapon_active
 		skin.switch_weapon(weapon_active)
 		do_squash_and_stretch(1.2, 0.15)
+	if Input.is_action_just_pressed("switch spell") and not skin.attacking:
+		#int(current_spell) convertit la valeur de current_spell (qui est déjà un entier dans ce cas) en entier.
+		#Par exemple, si current_spell vaut spells.FIREBALL (c'est-à-dire 0), alors int(current_spell) renvoie 0.
+		#
+		#(int(current_spell) + 1) incrémente la valeur actuelle de 1.
+		#Le modulo % len(spells) permet de revenir à 0 une fois que l'on atteint la fin de l'énumération.
+		#Dans notre exemple avec deux sorts, si current_spell vaut 0, alors (0 + 1) % 2 renvoie 1. Si current_spell vaut 1, alors (1 + 1) % 2 renvoie 0.
+		#
+		#spells.keys() renvoie un tableau contenant les clés de l’énumération. Dans ce cas, on obtient probablement ["FIREBALL", "HEAL"].
+		#En indexant ce tableau avec l'indice calculé précédemment, on sélectionne le nom du sort suivant.
+		#
+		#Finalement, spells[...] utilise le nom obtenu pour récupérer la valeur associée dans l’énumération.
+		current_spell = spells[spells.keys()[(int(current_spell) + 1) % len(spells)]]
+	
 
 func stop_movement(start_duration: float, end_duration: float) -> void:
 	var tween = create_tween()

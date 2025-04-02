@@ -30,3 +30,6 @@ func update_health(value: int, direction: int) -> void:
 		var extra_heart = heart_scene.instantiate()
 		heart_container.add_child(extra_heart)
 		extra_heart.change_alpha_tween(1.0)
+
+func update_spell(spells, current_spell) -> void:
+	pass
