@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dad6lj42o831l"]
+[gd_scene load_steps=6 format=3 uid="uid://dad6lj42o831l"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_d7n41"]
 [ext_resource type="PackedScene" uid="uid://7gok56jak6jr" path="res://scenes/entities/player/camera_controller.tscn" id="2_3bnka"]
 [ext_resource type="PackedScene" uid="uid://8jpm4qow1ijh" path="res://scenes/entities/player/godette_skin.tscn" id="3_xs6sy"]
+[ext_resource type="PackedScene" uid="uid://bg7y6ddoi5yk5" path="res://scenes/entities/player/ui.tscn" id="4_0u3p3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lpp5h"]
 
@@ -21,3 +22,5 @@ min_limit_x = -0.8
 max_limit_x = -0.2
 
 [node name="GodetteSkin" parent="." instance=ExtResource("3_xs6sy")]
+
+[node name="UI" parent="." instance=ExtResource("4_0u3p3")]

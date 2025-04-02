@@ -289,3 +289,17 @@ every single frame le node cast check si il y a une collision ou pas
 ============
 
 animation player node selected > en bas au niveau du terminal > animation > add track > call function > select le node où il y a le script avec la fonction
+
+============
+
+texturerect > inspector > texture > drag & drop png file
+puis
+texturerect > inspector > expand mode > fit width
+puis
+texturerect > inspector > stretch mode > keep aspect
+
+margincontainer > inspector > theme overrides > constants > check the margins i want to update value
+
+============
+
+texturerect > inspector > canvas item > material > new shader material > shader > new shader > create > click script shader created
