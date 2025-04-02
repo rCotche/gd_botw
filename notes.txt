@@ -305,3 +305,18 @@ margincontainer > inspector > theme overrides > constants > check the margins i 
 texturerect > inspector > canvas item > material > new shader material > shader > new shader > create > click script shader created
 
 texturerect > inspector > canvas item > material > click shader material > resources > enabled local to scene
+
+============
+
+textureprogressbar > inspector > textures > Under > drag & drop png file
+
+textureprogressbar > inspector > textures > progress > drag & drop png file
+
+textureprogressbar > inspector > tint > Under
+
+textureprogressbar > inspector > tint > progress
+
+stamina bar
+textureprogressbar > inspector > fill mode > clockwise
+
+textureprogressbar > inspector > canvas item > visibility > modulate > a = 0

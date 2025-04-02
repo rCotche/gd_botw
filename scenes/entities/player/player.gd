@@ -43,6 +43,23 @@ var health: int = 5:
 	set(value):
 		ui.update_health(value, value - health)
 		health = value
+		if health <=0:
+			get_tree().quit()
+var energy: int = 100:
+	set(value):
+		energy = min(100, value)
+		ui.update_energy(energy)
+var stamina: int = 100:
+	set(value):
+		#attention: ordre a son importance
+		ui.update_stamina(stamina, value)
+		if stamina == 100 and value < 100:
+			#visible
+			ui.change_stamina_alpha_tween(1.0)
+		if value == 100:
+			#invisible
+			ui.change_stamina_alpha_tween(0.0)
+		stamina = clamp(value, 0, 100)
 
 enum spells {FIREBALL, HEAL}
 var current_spell = spells.FIREBALL
@@ -111,7 +128,8 @@ func move_logic(delta: float) -> void:
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") and stamina >= 20:
+			stamina -= 20
 			velocity.y = -jump_velocity
 			do_squash_and_stretch(1.2, 0.15)
 	else:
@@ -125,8 +143,10 @@ func ability_logic() -> void:
 		if weapon_active:
 			skin.attack()
 		else:
-			skin.spell_cast()
-			stop_movement(0.3,0.8)
+			if energy >= 20:
+				skin.spell_cast()
+				stop_movement(0.3,0.8)
+				energy -= 20
 	
 	#defend/block
 	defend = Input.is_action_pressed("block")
@@ -168,5 +188,20 @@ func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
 	tween.tween_property(skin, "squash_and_stretch", value, duration)
 	tween.tween_property(skin, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_OUT)
 
-func shoot_fireball(pos: Vector3) ->void:
-	cast_spell.emit('fireball', pos, last_movement_input, 1.0)
+func shoot_magic(pos: Vector3) ->void:
+	if current_spell == spells.FIREBALL:
+		cast_spell.emit('fireball', pos, last_movement_input, 1.0)
+	if current_spell == spells.HEAL:
+		health += 1
+	#match current_spell:
+		#spells.FIREBALL:
+			#cast_spell.emit('fireball', pos, last_movement_input, 1.0)
+		#_:
+			#health += 1
+
+func _on_energy_recovery_timer_timeout() -> void:
+	energy += 1
+
+
+func _on_stamina_recovery_timer_timeout() -> void:
+	stamina += 1
