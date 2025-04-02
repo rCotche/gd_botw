@@ -32,7 +32,13 @@ var defend := false:
 			skin.defend(false)
 		defend = value
 #sword ou wand
-var weapon_active := true
+var weapon_active := true:
+	set(value):
+		weapon_active = value
+		if weapon_active:
+			ui.get_node("Spells").hide()
+		else:
+			ui.get_node("Spells").show()
 var health: int = 5:
 	set(value):
 		ui.update_health(value, value - health)
@@ -44,6 +50,7 @@ var current_spell = spells.FIREBALL
 signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
 
 func _ready() -> void:
+	weapon_active = true
 	skin.switch_weapon(weapon_active)
 	ui.setup(health)
 
@@ -142,7 +149,7 @@ func ability_logic() -> void:
 		#
 		#Finalement, spells[...] utilise le nom obtenu pour récupérer la valeur associée dans l’énumération.
 		current_spell = spells[spells.keys()[(int(current_spell) + 1) % len(spells)]]
-	
+		ui.update_spell(spells, current_spell)
 
 func stop_movement(start_duration: float, end_duration: float) -> void:
 	var tween = create_tween()

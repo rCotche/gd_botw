@@ -1,7 +1,10 @@
 extends Control
 
 @onready var heart_container = $Hearts/MarginContainer/HBoxContainer
+@onready var spell_texture = $Spells/MarginContainer/TextureRect
 var heart_scene: PackedScene = preload("res://scenes/entities/player/heart.tscn")
+var fire_texture = preload("res://graphics/ui/fire.png")
+var heal_texture = preload("res://graphics/ui/heal.png")
 
 func setup(value: int) -> void:
 	for i in value:
@@ -32,4 +35,12 @@ func update_health(value: int, direction: int) -> void:
 		extra_heart.change_alpha_tween(1.0)
 
 func update_spell(spells, current_spell) -> void:
-	pass
+	match current_spell:
+		spells.FIREBALL:
+			spell_texture.texture =  fire_texture
+		_:
+			spell_texture.texture =  heal_texture
+	#if current_spell == spells.FIREBALL:
+		#spell_texture.texture =  fire_texture
+	#if current_spell == spells.HEAL:
+		#spell_texture.texture =  heal_texture	
