@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmw0wcsicq7nj"]
+[gd_scene load_steps=3 format=3 uid="uid://cmw0wcsicq7nj"]
 
 [ext_resource type="Texture2D" uid="uid://c1bbbjkvgcdml" path="res://graphics/ui/heart.png" id="1_apob2"]
+[ext_resource type="Script" path="res://scenes/entities/player/heart.gd" id="2_1pt8j"]
 
 [node name="Heart" type="TextureRect"]
 offset_right = 40.0
@@ -8,3 +9,4 @@ offset_bottom = 40.0
 texture = ExtResource("1_apob2")
 expand_mode = 2
 stretch_mode = 4
+script = ExtResource("2_1pt8j")

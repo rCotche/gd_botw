@@ -1,5 +1,12 @@
 shader_type canvas_item;
 
+//Uniform :
+//Le mot-clé uniform permet de définir des variables accessibles
+//et modifiables depuis l'extérieur du shader (par exemple via l'éditeur ou par script).
+//Annotations (: source_color, : hint_range(...)) :
+//Ces annotations servent à donner des indications à l'éditeur pour
+//afficher ces propriétés de manière adaptée (sélecteur de couleur, slider, etc.).
+
 //uniform vec3 color :
 //Déclare une variable uniforme nommée color de type vec3 
 //(un vecteur à trois composantes), souvent utilisé pour représenter une couleur
@@ -21,5 +28,10 @@ uniform float progress : hint_range(0.0, 1.0) = 0.0;
 uniform float alpha : hint_range(0.0, 1.0) = 1.0;
 
 void fragment() {
-	// Called for every pixel the material is visible on.
+	//give the color of every single pixel of this graphic
+	vec4 texture_color = texture(TEXTURE, UV);
+	//mix la couleur que j'obtiens de texture_color avec la couleur du uniform
+	//the amount we r getting from the color is determined by progress
+	COLOR.rgb = mix(texture_color.rgb, color, progress);
+	COLOR.a = alpha * texture_color.a;
 }
