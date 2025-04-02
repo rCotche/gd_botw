@@ -24,3 +24,9 @@ max_limit_x = -0.2
 [node name="GodetteSkin" parent="." instance=ExtResource("3_xs6sy")]
 
 [node name="UI" parent="." instance=ExtResource("4_0u3p3")]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="InvulTimer" type="Timer" parent="Timers"]
+wait_time = 0.8
+one_shot = true

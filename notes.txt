@@ -303,3 +303,5 @@ margincontainer > inspector > theme overrides > constants > check the margins i 
 ============
 
 texturerect > inspector > canvas item > material > new shader material > shader > new shader > create > click script shader created
+
+texturerect > inspector > canvas item > material > click shader material > resources > enabled local to scene

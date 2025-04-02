@@ -16,8 +16,12 @@ extends CharacterBody3D
 @export var base_speed := 4.0
 @export var run_speed := 8.0
 @export var defend_speed := 2.0
-
 var speed_modifier := 1.0
+
+@onready var camera = $CameraController/Camera3D
+@onready var ui = $UI
+
+var last_movement_input := Vector2(0,1)
 var movement_input := Vector2.ZERO
 var defend := false:
 	set(value):
@@ -29,13 +33,16 @@ var defend := false:
 		defend = value
 #sword ou wand
 var weapon_active := true
-var last_movement_input := Vector2(0,1)
-@onready var camera = $CameraController/Camera3D
+var health: int = 5:
+	set(value):
+		ui.update_health(value, value - health)
+		health = value
 
 signal cast_spell(type: String, pos: Vector3, direction:Vector2, size: float)
 
 func _ready() -> void:
 	skin.switch_weapon(weapon_active)
+	ui.setup(health)
 
 #basic movement influence by a camera
 func _physics_process(delta: float) -> void:
@@ -126,11 +133,11 @@ func stop_movement(start_duration: float, end_duration: float) -> void:
 	tween.tween_property(self, "speed_modifier", 1.0, end_duration)
 
 func hit() -> void:
-	var timer = skin.get_node('InvulTimer')
-	if not timer.time_left:
+	if not $Timers/InvulTimer.time_left:
 		skin.hit()
 		stop_movement(0.3,0.3)
-		timer.start()
+		health -= 1
+		$Timers/InvulTimer.start()
 
 func do_squash_and_stretch(value: float, duration: float = 0.1) -> void:
 	var tween = create_tween()
