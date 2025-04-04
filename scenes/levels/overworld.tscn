@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://lmmitd6y842u"]
+
+[ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
+[ext_resource type="PackedScene" uid="uid://cpl7ycv5fm47e" path="res://scenes/levels/overworld_skin.tscn" id="2_uyjtf"]
+
+[node name="Overworld" instance=ExtResource("1_diwh1")]
+
+[node name="Player" parent="Entities" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.739433, 12.5393, -87.6833)
+
+[node name="overworld_environment" parent="Environment" index="0" instance=ExtResource("2_uyjtf")]

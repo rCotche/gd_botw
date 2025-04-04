@@ -333,3 +333,34 @@ collisioshape 3d > inspector > shape > worlboundary (cover the entire world)
 csgcombiner > inspector > operation >
 csgcombiner > inspector > use colision enabled
 add csg as child
+
+============
+
+file from blender
+
+right clik on file > new inherited scene > save
+
+saved scene > add statictbody3d > inspector > collision > layer
+puis
+statictbody3d > add collisionshape > inspector > shape > cylinder
+
+saved scene > add statictbody3d > inspector > collision > layer
+puis
+select mesh > en haut au niveau du sun,environnemen, select mode > mesh > create collision shape > collision sape placement > sibling > collision shape type > trimesh
+add the created shape to statictbody as a child
+
+============
+BLENDER
+
+
+open file .blend
+
+à droite > scene collector > rename mesh > add "-col" to the name eg. tree-col
+
+============
+
+db click on the file > select the part u do not want > skip import enabled
+
+============
+
+en haut au niveau du sun,environnemen, select mode > view > 
