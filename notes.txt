@@ -320,3 +320,16 @@ stamina bar
 textureprogressbar > inspector > fill mode > clockwise
 
 textureprogressbar > inspector > canvas item > visibility > modulate > a = 0
+
+============
+
+csgbox (mesh) > inspector > material > new standart material > click on material > albedo > texture
+
+============
+
+collisioshape 3d > inspector > shape > worlboundary (cover the entire world)
+
+
+csgcombiner > inspector > operation >
+csgcombiner > inspector > use colision enabled
+add csg as child
