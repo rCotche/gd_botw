@@ -363,4 +363,8 @@ db click on the file > select the part u do not want > skip import enabled
 
 ============
 
-en haut au niveau du sun,environnemen, select mode > view > 
+en haut au niveau du sun,environnemen, select mode > view >
+
+============
+
+meshinstance3d > inspector > mesh > new plane mesh
