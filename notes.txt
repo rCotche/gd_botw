@@ -406,3 +406,55 @@ rotate graphics avec : zqs
 collision pour les mesh
 
 click droit sur le mesh > make local > select mesh > add static body3d as a child > colllisionshape as child > inpector > shape > box > click on box > adjust size
+
+============
+
+PLUGIN tuto 0.9.2
+
+tout en haut > assetlib > type terrain > click on it > dl > install > restart
+puis
+project > project settings > addons > enabled addon
+
+1ER RAISE
+select terrain 3d > raise (raising the terrain, des bosses)
+en bas je peux increase size of the brush avec "size"
+
+en bas je peux increase la vitesse du raise avec "strenght"
+
+*tuto 2E LOWERING
+select terrain 3d > raise (raising the terrain, des bosses)
+en bas je peux increase size of the brush avec "size"
+
+en bas je peux increase la vitesse du raise avec "strenght"
+
+
+2E SLOPE
+fait une pente lisse
+
+============
+
+select terrain3d > inspector > name > albedo color >
+
+select terrain3d > en bas au niveau du termial > select terrain3d >  textures > click sur e pen pour modifier la texture > inspector > albedo texture > drag n drop png file
+
+select terrain3d > inspector > data directory > select where u want to save the terrain files
+
+select terrain3d > inspector > material > click > height blending enabled
+puis
+select terrain3d > inspector > material > click > auto shder enabled
+
+select terrain3d > inspector > material > click > auto base texture (hill)
+select terrain3d > inspector > material > click > auto overlay (ground)
+
+Peut voir les id de texture at:
+select terrain3d > en bas au niveau du termial > select terrain3d >  textures > click sur e pen pour modifier la texture > inspector > id
+
+Pour les feuilles & trees :
+instance mesh option
+select terrain3d > en bas au niveau du termial > select terrain3d >  textures > click sur e pen pour modifier la texture > inspector > scene file
+
+select terrain3d > en bas au niveau du termial > select terrain3d >  textures > click sur e pen pour modifier la texture > inspector > density
+
+============
+
+db click on the file > a droite > section gltf > enbeded image > embed as uncompress
