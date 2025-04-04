@@ -367,4 +367,13 @@ en haut au niveau du sun,environnemen, select mode > view >
 
 ============
 
-meshinstance3d > inspector > mesh > new plane mesh
+meshinstance3d > inspector > mesh > new plane mesh > click on plane > size x:600; y:250
+
+meshinstance3d > inspector > mesh > click on the mesh > material > new standardmaterial > click on material
+
+============
+REAL GAME
+
+mesh & static body3d for each pbject in game
+
+check collision if they r on the right layer
