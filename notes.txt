@@ -382,6 +382,7 @@ check collision if they r on the right layer
 
 gridmap = tilemap
 
+dungeontiles
 create a scene > add all grphics in the scene
 puis
 scene (a cote de project settings) > export as meshlibrary
@@ -398,3 +399,10 @@ floor grid
 wallgtid
 
 hold shift + right click = delete graphics
+rotate graphics avec : zqs
+
+============
+
+collision pour les mesh
+
+click droit sur le mesh > make local > select mesh > add static body3d as a child > colllisionshape as child > inpector > shape > box > click on box > adjust size
