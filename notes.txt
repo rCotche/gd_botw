@@ -377,3 +377,24 @@ REAL GAME
 mesh & static body3d for each pbject in game
 
 check collision if they r on the right layer
+
+============
+
+gridmap = tilemap
+
+create a scene > add all grphics in the scene
+puis
+scene (a cote de project settings) > export as meshlibrary
+puis
+gridmap > inspector > meshlibrary > quick load > add mesh Library created
+
+gridmap > inspector > cell > size 4;2;4
+
+en haut il ya floor
+
+TIPS
+
+floor grid
+wallgtid
+
+hold shift + right click = delete graphics
