@@ -458,3 +458,36 @@ select terrain3d > en bas au niveau du termial > select terrain3d >  textures > 
 ============
 
 db click on the file > a droite > section gltf > enbeded image > embed as uncompress
+
+blend  file, overwold
+
+select texture > au niveau de la tab scene, import tab > high quality enable
+
+============
+
+select directionnal light3d > inspector > sky mode
+light from the sun, light being reflected by the sky
+
+select directionnal light3d > inspector > light
+(shadow != directionnal shadow tab)
+select directionnal light3d > inspector > shadow
+
+============
+
+Le paramètre background détermine ce qui est affiché dans le fond de votre scène.
+select worldenvironnement > inspector > environnement > click environnment > background > mode > custom color > color
+
+PUIS
+
+Les paramètres d’ambient light servent à définir la lumière globale qui est appliquée à tous les objets de la scène (surtout dans les zones ombragées). Ils influencent l’apparence des matériaux en "remplissant" de lumière les zones non directement éclairées par une source lumineuse.
+select worldenvironnement > inspector > environnement > click environnment > ambient color > source > color >
+
+select worldenvironnement > inspector > environnement > click environnment > tonemap > mode > linear
+
+select worldenvironnement > inspector > environnement > click environnment > SSR = more reflection in the game
+
+select worldenvironnement > inspector > environnement > click environnment > SSAO =  more shadows in the corner
+
+select worldenvironnement > inspector > environnement > click environnment > SSIL = more shadows
+
+select worldenvironnement > inspector > environnement > click environnment > SDFGI = donne une globzl light
