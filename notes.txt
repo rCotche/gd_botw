@@ -491,3 +491,34 @@ select worldenvironnement > inspector > environnement > click environnment > SSA
 select worldenvironnement > inspector > environnement > click environnment > SSIL = more shadows
 
 select worldenvironnement > inspector > environnement > click environnment > SDFGI = donne une globzl light
+
+select worldenvironnement > inspector > environnement > click environnment > fog = Il convient bien pour créer une ambiance distante, du brouillard de perspective, ou simuler une atmosphère sans détails complexes de diffusion lumineuse.
+Par exemple, pour une scène de plein air où vous voulez simplement estomper la visibilité au loin.
+
+select worldenvironnement > inspector > environnement > click environnment > volumetric fog = Il est idéal pour des scènes nécessitant un rendu immersif et réaliste, par exemple dans des environnements brumeux avec des effets de lumière marqués (comme des rayons de soleil traversant la brume) ou pour renforcer l’atmosphère d’un environnement intérieur avec une lumière diffuse.
+
+select worldenvironnement > inspector > environnement > click environnment >adjustement
+
+============
+
+select worldenvironnement > inspector > camera attributes > new camera attributes pratical > click on camera attributes pratical > dof blur > enable > far distance (à partir de quand l'environnement devient flou pour le joueur)
+
+select worldenvironnement > inspector > camera attributes > new camera attributes pratical > click on camera attributes pratical > dof blur > enable > far transition (smoother transition si la valeur est eleve)
+
+select worldenvironnement > inspector > camera attributes > new camera attributes pratical > click on camera attributes pratical > dof blur > enable > amount (valeur eleve = flou plus intense)
+
+============
+
+select camera > inspector > fov
+
+============
+
+fog volume node > inspector > material > fog material > click on > emission
+
+============
+
+omnilight = candle/lamp
+
+spotlight = flashlight
+
+select omnilight > inpector > light > color >

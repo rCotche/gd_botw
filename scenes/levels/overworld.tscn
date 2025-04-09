@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=11 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
 [ext_resource type="PackedScene" uid="uid://cpl7ycv5fm47e" path="res://scenes/levels/overworld_skin.tscn" id="2_uyjtf"]
@@ -23,6 +23,22 @@ ambient_light_energy = 0.6
 ssao_enabled = true
 ssil_enabled = true
 glow_enabled = true
+glow_intensity = 0.9
+glow_strength = 0.85
+glow_blend_mode = 1
+fog_enabled = true
+fog_density = 0.0001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_t2k3t"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 150.0
+dof_blur_far_transition = 250.0
+dof_blur_amount = 0.06
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5pdw"]
 albedo_color = Color(0, 0.533333, 1, 1)
@@ -35,6 +51,7 @@ size = Vector2(600, 250)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 environment = SubResource("Environment_obw78")
+camera_attributes = SubResource("CameraAttributesPractical_t2k3t")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
 transform = Transform3D(-0.866023, -0.446688, 0.224663, 0, 0.449322, 0.89337, -0.500003, 0.773679, -0.389123, 0, 0, 0)
@@ -59,4 +76,4 @@ transform = Transform3D(1, 0, 0, 0, 0.996844, 0.0793812, 0, -0.0793812, 0.996844
 transform = Transform3D(0.323769, 0, 0.946136, 0, 1, 0, -0.946136, 0, 0.323769, 131.778, -37.7261, 314.867)
 
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4457, 16.326, -69.9036)
+transform = Transform3D(1, 0, 0, 0, 0.983622, -0.180244, 0, 0.180244, 0.983622, 1.4457, 16.326, -69.9036)
