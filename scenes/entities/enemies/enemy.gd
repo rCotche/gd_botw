@@ -47,6 +47,10 @@ func move_to_player(delta: float) -> void:
 		else:
 			velocity = Vector3.ZERO
 			move_state_machine.travel('idle')
+		if not is_on_floor():
+			velocity.y -= 2
+		else:
+			velocity.y = 0
 		#move the enemy
 		move_and_slide()
 

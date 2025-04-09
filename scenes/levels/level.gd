@@ -19,5 +19,9 @@ func create_fireball(_type: String, pos: Vector3, direction: Vector2, size: floa
 	fireball.direction = direction
 	fireball.setup(size)
 
+func switch_level_deferred(target: String) -> void:
+	#needed to make sur we dont mess with physics lorsque l'on change de scene
+	call_deferred('switch_level', target)
+
 func switch_level(target: String) -> void:
 	get_tree().change_scene_to_file(scenes[target])
