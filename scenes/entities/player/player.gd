@@ -79,6 +79,7 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("ui_accept"):
 		#hit()
 	move_and_slide()
+	physical_logic()
 
 func move_logic(delta: float) -> void:
 	movement_input = Input.get_vector("left", "right", "forward", "backward").rotated(-camera.global_rotation.y)
@@ -202,6 +203,13 @@ func shoot_magic(pos: Vector3) ->void:
 func _on_energy_recovery_timer_timeout() -> void:
 	energy += 1
 
-
 func _on_stamina_recovery_timer_timeout() -> void:
 	stamina += 1
+
+func physical_logic() -> void:
+	#get all collision with physical object
+	for i in get_slide_collision_count():
+		# the actual object we collided with
+		var collider = get_slide_collision(i).get_collider()
+		if collider is RigidBody3D:
+			collider.apply_central_impulse(-get_slide_collision(i).get_normal())

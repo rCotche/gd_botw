@@ -72,6 +72,7 @@ shadow_blur = 4.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 12.5, -87)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
 curve = SubResource("Curve3D_7rm46")
 
 [node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]

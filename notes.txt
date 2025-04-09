@@ -533,3 +533,27 @@ select path3d node > en haut au niveau du view option > 2nd option mode selected
 
 this node have a progressbar that let ypu follow the path
 select pathfollow3d node > inspector > use model front
+
+============
+
+drag and drop in scene tree
+puis
+select model > click droid > rendre local
+puis
+drag all the meshes as a child of pathfollow3d node
+puis
+delete node create by godot
+puis
+add animationplayer node > en bas au niveau du terminal > select animation tab > click on animation > new > bird_flap
+puis
+add custrom track > property track > left wing > rotation
+
+selct key > ctrl + c
+puis
+click droit > paste keys
+
+============
+
+rigibody3d, il faut pas générer la collision via la mesh avec le type trimesh
+
+meshinstace node selected > en haut au niveau de l'affichage, select mesh > create collison shape > placement sibling, type single convexe
