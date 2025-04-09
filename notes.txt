@@ -522,3 +522,14 @@ omnilight = candle/lamp
 spotlight = flashlight
 
 select omnilight > inpector > light > color >
+
+============
+
+select path3d node > en haut au niveau du view option > add point mode selected
+puis
+select path3d node > en haut au niveau du view option > close curve
+puis
+select path3d node > en haut au niveau du view option > 2nd option mode selected > shift + drag (glisser la souris), fait une courbe (ne fonctionne pas bien avec le 1er point ajouté)
+
+this node have a progressbar that let ypu follow the path
+select pathfollow3d node > inspector > use model front

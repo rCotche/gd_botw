@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=13 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
+[ext_resource type="PackedScene" uid="uid://dxhjm5h5qjjee" path="res://scenes/entities/other/bird.tscn" id="2_tn1h7"]
 [ext_resource type="PackedScene" uid="uid://cpl7ycv5fm47e" path="res://scenes/levels/overworld_skin.tscn" id="2_uyjtf"]
 [ext_resource type="PackedScene" uid="uid://dyqgpalobdwym" path="res://scenes/levels/moi_bridge.tscn" id="3_x6ria"]
 [ext_resource type="PackedScene" uid="uid://dwjrrhoj6ltyx" path="res://graphics/environment/castle.blend" id="4_h4e08"]
@@ -40,6 +41,13 @@ dof_blur_far_distance = 150.0
 dof_blur_far_transition = 250.0
 dof_blur_amount = 0.06
 
+[sub_resource type="Curve3D" id="Curve3D_7rm46"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -56.6598, -8.15567, 169.097, -44.2902, 0.734894, -13.5724, 44.2902, -0.734894, 13.5724, 112.203, -7.84506, 156.834, 4.48328, 2.07657, -42.7272, -4.48328, -2.07657, 42.7272, 175.761, -12.7185, 254.477, 43.3055, 0.639313, -14.6411, -43.3055, -0.639313, 14.6411, 95.8349, -16.1164, 326.893, 21.1319, -0.622101, 11.9939, -21.1319, 0.622101, -11.9939, -20.6045, -16.8542, 346.078, 33.1638, -2.4288, 48.5747, -33.1638, 2.4288, -48.5747, -99.1048, -13.34, 276.807, 0, 0, 0, 0, 0, 0, -56.6598, -8.15567, 169.097),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5pdw"]
 albedo_color = Color(0, 0.533333, 1, 1)
 
@@ -62,6 +70,13 @@ shadow_blur = 4.5
 
 [node name="Player" parent="Entities" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 12.5, -87)
+
+[node name="Path3D" type="Path3D" parent="Entities" index="1"]
+curve = SubResource("Curve3D_7rm46")
+
+[node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]
+transform = Transform3D(-0.0724282, -0.00182976, 0.997372, 0, 0.999998, 0.00183458, -0.997374, 0.000132875, -0.0724281, -56.6598, -8.15567, 169.097)
+use_model_front = true
 
 [node name="overworld_environment" parent="Environment" index="0" instance=ExtResource("2_uyjtf")]
 
