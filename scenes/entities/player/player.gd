@@ -20,6 +20,7 @@ var speed_modifier := 1.0
 
 @onready var camera = $CameraController/Camera3D
 @onready var ui = $UI
+@onready var run_particles = $RunParticles
 
 var last_movement_input := Vector2(0,1)
 var movement_input := Vector2.ZERO
@@ -126,6 +127,8 @@ func move_logic(delta: float) -> void:
 		skin.set_move_state('Idle')
 	if movement_input:
 		last_movement_input = movement_input.normalized()
+	#emitting particle si godette run
+	run_particles.emitting = is_on_floor() and is_running and movement_input != Vector2.ZERO
 
 func jump_logic(delta: float) -> void:
 	if is_on_floor():

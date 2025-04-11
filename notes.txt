@@ -556,4 +556,34 @@ click droit > paste keys
 
 rigibody3d, il faut pas générer la collision via la mesh avec le type trimesh
 
-meshinstace node selected > en haut au niveau de l'affichage, select mesh > create collison shape > placement sibling, type single convexe
+meshinstance node selected > en haut au niveau de l'affichage, select mesh > create collison shape > placement sibling, type single convexe
+
+============
+
+cpuparticle is for weak system == phone/website
+
+gpuparticle
+
+gpuparticle node > inspector > process material > new particle process material
+puis
+gpuparticle node > inspector > draw passes > pass 1 > sphere mesh
+
+
+
+gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > new standard material > click on standard material > albedo > color
+puis
+gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > metallic > specular = 0
+
+
+gpuparticle node > inspector > process material > click on particle process material > spawn > position > emission shape > sphere
+puis
+gpuparticle node > inspector > process material > click on particle process material > spawn > position > emission sphere radius > 0.6
+puis
+gpuparticle node > inspector > process material > click on particle process material > accélérations > gravity > y = 1
+puis
+gpuparticle node > inspector > process material > click on particle process material > display > scale > min 0.1; max 0.3
+
+
+gpuparticle node > inspector > geometry > cast shadow  = off
+puis
+gpuparticle node > inspector > geometry > transparency = 0.25
