@@ -5,6 +5,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rm4au"]
 render_priority = 0
 shader = ExtResource("1_fsogo")
+shader_parameter/WaveHeight = 5.0
+shader_parameter/Color = Color(0.188235, 0.407843, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_amwfh"]
 material = SubResource("ShaderMaterial_rm4au")

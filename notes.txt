@@ -609,3 +609,56 @@ puis
 meshinstance3d > inspector > mesh > plane mesh > clik on > material > new shader material > click on > shader > new shader > visual shader > spatial > create
 puis
 meshinstance3d > inspector > mesh > plane mesh > clik on > material > click on shader material > shader > click on > 
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type color > select le NODE color paramater > default value enable > connect color parameter to albedo
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type float > select NODE float constant > 0.5 > connect float constant to alpha
+puis	(difference beteween parameter et constant c'est que un paramter can be change dans l'inspector)
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type float > select NODE float constant > 1 > connect float constant to roughness (less shiny)
+
+============
+
+via fragment shader on change la color et l'alpha
+
+via vertex shader on change the position of the vertices
+
+
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type vertex > select NODE vertex
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type add > select NODE add categ operator de type vec3
+puis
+vertex (input) node to 1st point du node add vec3
+puis
+node add vec3 to vertex (output)
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type texture > select NODE texture2d > new noise texture2d
+puis
+||
+||
+inspector > seamless enable > noise > fast noise lite > click on > noise type > cellular
+puis
+inspector > noise > fast noise lite > click on > fractal > type > none
+puis
+inspector > noise > fast noise lite > click on > cellular > distance func > euclidean squared
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type float > select NODE float parameter
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type multi > select NODE multiply categ operator de type vec3
+puis
+float parameter node to 1st point du node multiply vec3
+puis
+node multiply vec3 to node add vec3 2nd point
+puis
+node texture2d to node multiply vec3 2nd point
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > select NODE float parameter > default value enable
+
+DEBUT EXPLICATION
+
+dans la texture a chaque fois quona une couleur white, on a une valeur de 1
+puis
+cette valeur est multiplié par 20
+puis
+cette valeur est ajouter a la position du vertex
+
+FIN EXPLICATION

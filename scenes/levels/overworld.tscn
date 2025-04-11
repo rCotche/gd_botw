@@ -77,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
 curve = SubResource("Curve3D_7rm46")
 
 [node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]
-transform = Transform3D(-0.0724303, -0.00182977, 0.997372, 0, 0.999998, 0.00183459, -0.997374, 0.00013288, -0.0724301, -56.6598, -8.15567, 169.097)
+transform = Transform3D(-0.0724303, -0.00182977, 0.997371, 0, 0.999998, 0.00183459, -0.997374, 0.00013288, -0.0724301, -56.6598, -8.15567, 169.097)
 use_model_front = true
 
 [node name="Skeleton_mage" parent="Entities" index="2" instance=ExtResource("4_c8srf")]
