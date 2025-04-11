@@ -586,3 +586,12 @@ gpuparticle node > inspector > process material > click on particle process mate
 gpuparticle node > inspector > geometry > cast shadow  = off
 puis
 gpuparticle node > inspector > geometry > transparency = 0.25
+
+
+gpuparticle node > inspector > process material > click on particle process material > display > color curves > color ramp > new grdient texture > click on
+puis
+click sur le rectangle dans le gradient bar > ensuite click sur le carré pour select le color
+puis
+gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > vertex color > enable use as albedo
+puis
+gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > albedo > white color
