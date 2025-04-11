@@ -569,7 +569,6 @@ puis
 gpuparticle node > inspector > draw passes > pass 1 > sphere mesh
 
 
-
 gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > new standard material > click on standard material > albedo > color
 puis
 gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > metallic > specular = 0
