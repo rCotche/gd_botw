@@ -641,9 +641,9 @@ inspector > noise > fast noise lite > click on > fractal > type > none
 puis
 inspector > noise > fast noise lite > click on > cellular > distance func > euclidean squared
 puis
-en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type float > select NODE float parameter
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type float > select NODE float parameter
 puis
-en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type multi > select NODE multiply categ operator de type vec3
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type multi > select NODE multiply categ operator de type vec3
 puis
 float parameter node to 1st point du node multiply vec3
 puis
@@ -651,7 +651,7 @@ node multiply vec3 to node add vec3 2nd point
 puis
 node texture2d to node multiply vec3 2nd point
 puis
-en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > select NODE float parameter > default value enable
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > select NODE float parameter > default value enable
 
 DEBUT EXPLICATION
 
@@ -662,3 +662,89 @@ puis
 cette valeur est ajouter a la position du vertex
 
 FIN EXPLICATION
+
+vertex est calculated 1st the fragment
+
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > manage varyings > add varyings
+puis
+vector3; "texture_v"; vertex -> fragment > create
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type varying > select NODE varyingSetter
+puis
+selected NODE varyingSetter > click on liste deroulante > select the varying created
+puis
+texture2d NODE to NODE varyingSetter
+
+
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type varying > select NODE varyingGetter
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > selected NODE varyingGetter > click on liste deroulante > select the varying created
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type multi > select NODE multiply categ operator de type vec3
+puis
+color parameter node to 1st point du node multiply vec3
+puis
+node multiply vec3 to albedo (output)
+puis
+NODE varyingGetter to node multiply vec3 2nd point
+
+debut EXPLICATION
+
+plus les vertex sont haut plus on a de la couleur
+
+FIN EXPLICATION
+
+select node multiply vec3 & change it to add
+
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type pow > select node 
+NOW
+
+varyingGetter -> node pow -> add node vec3
+
+debut EXPLICATION
+
+si la couleur est blanc it become whiter, si la couleur is black it becomes darker
+
+FIN EXPLICATION
+
+============
+
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > select node texture2d > click on texture > inspector > click on fast nois > frequency 0.05
+
+meshinstance3d > inspector > maerial > click on shader > shader paramater > wave height
+
+============
+
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type uvpan > select node uvpanning (offset : deplace de gauche a droit ou du haut vers le bas les vertex)
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type time > select node time
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type multi > select node multiply categ op type float
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type vector2param > rename it to direction
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > vertex shader selected > click droit > type multi > select node multiply categ op type vector2
+
+time node -> multiply type float node  -> multiply type vec2 node 1st point -> uvpanning node, offset point -> texture2d, uv point
+puis
+vector2param -> multiply type vec2 node 2nd point
+
+============
+(si il y a PAS qlq chose derriere l'objet (le plane mesh) à une distance de moins 1 meter, alors elle prend une valeur de 1, sinon elle prends une inférieur à 1 selon la distance)
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type proximity > node proximity fade
+puis
+
+(node oneminus invert l'effet de proxymity fade)
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type oneminus > node oneminus categ func
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type multi > node multi categ operator type float
+puis
+en bas au niveau du terminal (editeur de shader tab selected) > fragment shader selected > click droit > type add > node add categ operator type vector3
+
+proxy -> onminus -> node multi categ operator type float -> node add categ operator type vector3 -> (albedo output)
+
+debut EXPLICATION
+
+get la texture > addition la texture avec la couleur
+
+debut EXPLICATION
