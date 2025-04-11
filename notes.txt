@@ -595,3 +595,17 @@ puis
 gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > vertex color > enable use as albedo
 puis
 gpuparticle node > inspector > draw passes > pass 1 > click on sphere mesh > material > click on standard material > albedo > white color
+
+============
+
+meshinstance3d > inspector > mesh > plane mesh > clik on > size 500;500
+puis
+click on perspective > display wireframe (voir les vertices)
+puis
+meshinstance3d > inspector > mesh > plane mesh > clik on > subdivide width = 100
+puis
+meshinstance3d > inspector > mesh > plane mesh > clik on > subdivide depth = 100
+puis
+meshinstance3d > inspector > mesh > plane mesh > clik on > material > new shader material > click on > shader > new shader > visual shader > spatial > create
+puis
+meshinstance3d > inspector > mesh > plane mesh > clik on > material > click on shader material > shader > click on > 

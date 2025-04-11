@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=16 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
 [ext_resource type="Script" path="res://scenes/levels/overworld.gd" id="2_mfqma"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://q2ctoee5r2jh" path="res://scenes/entities/enemies/skeleton_mage.tscn" id="4_c8srf"]
 [ext_resource type="PackedScene" uid="uid://dwjrrhoj6ltyx" path="res://graphics/environment/castle.blend" id="4_h4e08"]
 [ext_resource type="PackedScene" uid="uid://cihqfmapbx5jq" path="res://scenes/entities/enemies/skeleton_warrior.tscn" id="5_g4ex5"]
+[ext_resource type="PackedScene" uid="uid://d2c5tm13ygykc" path="res://scenes/vfx/water.tscn" id="9_fmfjp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1nay"]
 sky_top_color = Color(0.0745863, 0.490864, 0.638583, 1)
@@ -51,13 +52,6 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5pdw"]
-albedo_color = Color(0, 0.533333, 1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_k10qv"]
-material = SubResource("StandardMaterial3D_f5pdw")
-size = Vector2(600, 250)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qyok"]
 size = Vector3(3.11087, 3.20337, 0.796234)
 
@@ -83,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
 curve = SubResource("Curve3D_7rm46")
 
 [node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]
-transform = Transform3D(-0.0724282, -0.00182976, 0.997372, 0, 0.999998, 0.00183458, -0.997374, 0.000132875, -0.0724281, -56.6598, -8.15567, 169.097)
+transform = Transform3D(-0.0724303, -0.00182977, 0.997372, 0, 0.999998, 0.00183459, -0.997374, 0.00013288, -0.0724301, -56.6598, -8.15567, 169.097)
 use_model_front = true
 
 [node name="Skeleton_mage" parent="Entities" index="2" instance=ExtResource("4_c8srf")]
@@ -94,17 +88,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151, -32.8417, 289)
 
 [node name="overworld_environment" parent="Environment" index="0" instance=ExtResource("2_uyjtf")]
 
-[node name="Water" type="MeshInstance3D" parent="Environment" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.0499, 209.684)
-mesh = SubResource("PlaneMesh_k10qv")
-
-[node name="bridge" parent="Environment" index="2" instance=ExtResource("3_x6ria")]
+[node name="bridge" parent="Environment" index="1" instance=ExtResource("3_x6ria")]
 transform = Transform3D(1, 0, 0, 0, 0.996844, 0.0793812, 0, -0.0793812, 0.996844, 46, -43.9418, 254.342)
 
-[node name="castle" parent="Environment" index="3" instance=ExtResource("4_h4e08")]
+[node name="castle" parent="Environment" index="2" instance=ExtResource("4_h4e08")]
 transform = Transform3D(0.323769, 0, 0.946136, 0, 1, 0, -0.946136, 0, 0.323769, 131.778, -37.7261, 314.867)
 
-[node name="CastleArea" type="Area3D" parent="Environment" index="4"]
+[node name="CastleArea" type="Area3D" parent="Environment" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.419, -30.092, 306.158)
 collision_layer = 0
 collision_mask = 2
@@ -112,6 +102,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/CastleArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195938, 0.651733, 0.539703)
 shape = SubResource("BoxShape3D_3qyok")
+
+[node name="Water" parent="Environment" index="4" instance=ExtResource("9_fmfjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.5999, 208.812)
 
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.983622, -0.180244, 0, 0.180244, 0.983622, 1.4457, 16.326, -69.9036)
