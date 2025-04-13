@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=17 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
 [ext_resource type="Script" path="res://scenes/levels/overworld.gd" id="2_mfqma"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dwjrrhoj6ltyx" path="res://graphics/environment/castle.blend" id="4_h4e08"]
 [ext_resource type="PackedScene" uid="uid://cihqfmapbx5jq" path="res://scenes/entities/enemies/skeleton_warrior.tscn" id="5_g4ex5"]
 [ext_resource type="PackedScene" uid="uid://d2c5tm13ygykc" path="res://scenes/vfx/water.tscn" id="9_fmfjp"]
+[ext_resource type="PackedScene" uid="uid://ubhmhwbdl4l8" path="res://scenes/vfx/grass_blade.tscn" id="10_u7tk1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1nay"]
 sky_top_color = Color(0.0745863, 0.490864, 0.638583, 1)
@@ -70,7 +71,7 @@ shadow_opacity = 0.9
 shadow_blur = 4.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.753, -32.8055, 298.778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5409, 12.5904, -81.8862)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
@@ -105,6 +106,11 @@ shape = SubResource("BoxShape3D_3qyok")
 
 [node name="Water" parent="Environment" index="4" instance=ExtResource("9_fmfjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.5999, 208.812)
+
+[node name="Grass" type="Node3D" parent="Environment" index="5"]
+
+[node name="GrassBlade" parent="Environment/Grass" index="0" instance=ExtResource("10_u7tk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923004, 12.5393, -82.6571)
 
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.983622, -0.180244, 0, 0.180244, 0.983622, 1.4457, 16.326, -69.9036)

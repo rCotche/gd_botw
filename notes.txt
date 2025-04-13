@@ -747,4 +747,36 @@ debut EXPLICATION
 
 get la texture > addition la texture avec la couleur
 
+fin EXPLICATION
+
+============
+
+meshinstance > inspector > mesh > drag n drop obj file
+puis
+meshinstance > inspector > geometry > material override > new shadermaterial > shader > new shader > shader (norrmal codebase) > create
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on
+puis
+en bas au niveau du terminal (editeur de shader tab selected)
+
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters
+
+============
+
 debut EXPLICATION
+
+curve_sampler est configuré pour ne pas répéter la texture. Cela signifie que si vous fournissez des coordonnées UV en dehors de [0, 1], la texture ne sera pas dupliquée mais, généralement, la valeur aux bords sera conservée (clamping).
+
+wind_sampler est configuré pour répéter la texture, ce qui permet d'obtenir un effet de tuilage, et utilise le filtrage linéaire pour un rendu plus lisse lorsqu'on accède à la texture.
+
+fin EXPLICATION
+
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > curve sampler > new curve texture > click on > curve > new curve > click on
+puis
+(curve) > click to get a 1st point > click une deuxieme fois pour avoir le 2nd point > adjust pour avoir la courbe
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > new nose texture > click on > seamless enable
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > click on > noise > new fastnoiselite > click on
+puis
+(fastnoiselite) > fractal > octave = 1
