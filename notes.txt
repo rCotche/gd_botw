@@ -784,3 +784,20 @@ puis
 ============
 
 project > project settings > globals > shader global tab > player_position de type vec3 > add
+
+============
+
+tout en haut > assetlib > type proton (proton scsatter) > click on it > dl > install > restart
+puis
+project > project settings > addons > enabled addon
+
+protonscatter node > inspector > create Inside > amount
+
+scatershape node selected > red dot to expand the area
+
+scatershape node selected > inspector > shape
+
+scatteritem node selected > inspector > path > choose my scene
+
+MOI
+radius scattershape node et amount in prontonscatter node doivent être proportionnelle

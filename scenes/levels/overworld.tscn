@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=32 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
 [ext_resource type="Script" path="res://scenes/levels/overworld.gd" id="2_mfqma"]
@@ -9,7 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://dwjrrhoj6ltyx" path="res://graphics/environment/castle.blend" id="4_h4e08"]
 [ext_resource type="PackedScene" uid="uid://cihqfmapbx5jq" path="res://scenes/entities/enemies/skeleton_warrior.tscn" id="5_g4ex5"]
 [ext_resource type="PackedScene" uid="uid://d2c5tm13ygykc" path="res://scenes/vfx/water.tscn" id="9_fmfjp"]
-[ext_resource type="PackedScene" uid="uid://ubhmhwbdl4l8" path="res://scenes/vfx/grass_blade.tscn" id="10_u7tk1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="11_lrqth"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="12_3e4lu"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="13_16njx"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="14_q0smk"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="15_ndp2a"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="16_lk7ps"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="17_jh16u"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="18_7rwej"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="19_j51jq"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="20_gpsrr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q1nay"]
 sky_top_color = Color(0.0745863, 0.490864, 0.638583, 1)
@@ -56,6 +65,62 @@ point_count = 7
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qyok"]
 size = Vector3(3.11087, 3.20337, 0.796234)
 
+[sub_resource type="Resource" id="Resource_a8rj5"]
+script = ExtResource("14_q0smk")
+amount = 1000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_thvq7"]
+script = ExtResource("15_ndp2a")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_x36s3"]
+script = ExtResource("16_lk7ps")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_isdte"]
+script = ExtResource("17_jh16u")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_ul0ga"]
+script = ExtResource("12_3e4lu")
+stack = Array[ExtResource("13_16njx")]([SubResource("Resource_a8rj5"), SubResource("Resource_thvq7"), SubResource("Resource_x36s3"), SubResource("Resource_isdte")])
+
+[sub_resource type="Resource" id="Resource_g8bsm"]
+script = ExtResource("20_gpsrr")
+radius = 6.39201
+
 [node name="Overworld" instance=ExtResource("1_diwh1")]
 script = ExtResource("2_mfqma")
 
@@ -78,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
 curve = SubResource("Curve3D_7rm46")
 
 [node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]
-transform = Transform3D(-0.0724303, -0.00182977, 0.99737, 0, 0.999998, 0.00183459, -0.997374, 0.00013288, -0.07243, -56.6598, -8.15567, 169.097)
+transform = Transform3D(-0.0724303, -0.00182977, 0.997369, 0, 0.999998, 0.00183459, -0.997374, 0.00013288, -0.07243, -56.6598, -8.15567, 169.097)
 use_model_front = true
 
 [node name="Skeleton_mage" parent="Entities" index="2" instance=ExtResource("4_c8srf")]
@@ -109,8 +174,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.5999, 208.812)
 
 [node name="Grass" type="Node3D" parent="Environment" index="5"]
 
-[node name="GrassBlade" parent="Environment/Grass" index="0" instance=ExtResource("10_u7tk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923004, 12.5393, -82.6571)
+[node name="ProtonScatter" type="Node3D" parent="Environment/Grass" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57672, 14.5381, -81.4647)
+script = ExtResource("11_lrqth")
+modifier_stack = SubResource("Resource_ul0ga")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="ScatterItem" type="Node3D" parent="Environment/Grass/ProtonScatter" index="0"]
+script = ExtResource("18_7rwej")
+path = "res://scenes/vfx/grass_blade.tscn"
+
+[node name="ScatterShape" type="Node3D" parent="Environment/Grass/ProtonScatter" index="1"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("19_j51jq")
+shape = SubResource("Resource_g8bsm")
 
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 0.983622, -0.180244, 0, 0.180244, 0.983622, 1.4457, 16.326, -69.9036)
