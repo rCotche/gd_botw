@@ -750,6 +750,7 @@ get la texture > addition la texture avec la couleur
 fin EXPLICATION
 
 ============
+grass
 
 meshinstance > inspector > mesh > drag n drop obj file
 puis
@@ -775,7 +776,7 @@ meshinstance > inspector > geometry > material override > click on > shader > cl
 puis
 (curve) > click to get a 1st point > click une deuxieme fois pour avoir le 2nd point > adjust pour avoir la courbe
 puis
-meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > new nose texture > click on > seamless enable
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > new noise texture > click on > seamless enable
 puis
 meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > click on > noise > new fastnoiselite > click on
 puis
@@ -801,3 +802,28 @@ scatteritem node selected > inspector > path > choose my scene
 
 MOI
 radius scattershape node et amount in prontonscatter node doivent être proportionnelle
+
+============
+
+fireball
+
+meshinstance > inspector > mesh > drag n drop obj file
+puis
+meshinstance > inspector > geometry > material override > new shadermaterial > shader > new shader > shader (norrmal codebase) > create
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on
+puis
+en bas au niveau du terminal (editeur de shader tab selected)
+
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > noise sampler > new noise texture > click on > seamless enable
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > noise sampler > click on > noise > new fastnoiselite > click on
+puis
+(fastnoiselite) > noise type = cellular
+puis
+(fastnoiselite) > fractal > type = none
+
+
+meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > gradient sample > new gradient texture 1d > click on
+puis
+(gradienttexture1d) > gradient > click on 
