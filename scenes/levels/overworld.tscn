@@ -65,7 +65,7 @@ point_count = 7
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qyok"]
 size = Vector3(3.11087, 3.20337, 0.796234)
 
-[sub_resource type="Resource" id="Resource_ctkew"]
+[sub_resource type="Resource" id="Resource_r8fjg"]
 script = ExtResource("14_q0smk")
 amount = 1000
 enabled = true
@@ -74,7 +74,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_k77jl"]
+[sub_resource type="Resource" id="Resource_xecf0"]
 script = ExtResource("15_ndp2a")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -85,7 +85,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_3j28c"]
+[sub_resource type="Resource" id="Resource_8u4kb"]
 script = ExtResource("16_lk7ps")
 iterations = 3
 offset_step = 0.2
@@ -97,7 +97,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_fllgn"]
+[sub_resource type="Resource" id="Resource_iyqff"]
 script = ExtResource("17_jh16u")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -113,9 +113,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_i7puq"]
+[sub_resource type="Resource" id="Resource_e371g"]
 script = ExtResource("12_3e4lu")
-stack = Array[ExtResource("13_16njx")]([SubResource("Resource_ctkew"), SubResource("Resource_k77jl"), SubResource("Resource_3j28c"), SubResource("Resource_fllgn")])
+stack = Array[ExtResource("13_16njx")]([SubResource("Resource_r8fjg"), SubResource("Resource_xecf0"), SubResource("Resource_8u4kb"), SubResource("Resource_iyqff")])
 
 [sub_resource type="Resource" id="Resource_g8bsm"]
 script = ExtResource("20_gpsrr")
@@ -136,7 +136,7 @@ shadow_opacity = 0.9
 shadow_blur = 4.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5409, 12.5904, -81.8862)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.237, -32.9188, 285.227)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
@@ -177,7 +177,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.5999, 208.812)
 [node name="ProtonScatter" type="Node3D" parent="Environment/Grass" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57672, 14.5381, -81.4647)
 script = ExtResource("11_lrqth")
-modifier_stack = SubResource("Resource_i7puq")
+modifier_stack = SubResource("Resource_e371g")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

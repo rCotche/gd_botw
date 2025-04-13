@@ -66,6 +66,7 @@ func hit() -> void:
 	#cancel attack animation
 	$AnimationTree.set("parameters/AttackOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	attacking = false
+	hit_tween()
 
 func change_face(expression: String) ->void:
 	face_material.uv1_offset = faces[expression]
@@ -78,3 +79,21 @@ func _on_blink_timer_timeout() -> void:
 
 func can_damage(value: bool) -> void:
 	$Rig/Skeleton3D/RightHandSlot/Sword.can_damage = value
+
+func heal_tween() -> void:
+	var tween = create_tween()
+	tween.tween_method(heal_effect, 0.0, 0.7, 0.5)
+	tween.tween_method(heal_effect, 0.7, 0.0, 0.2)
+
+func heal_effect(value: float) -> void:
+	$Rig/Skeleton3D/Godette_Body.material_overlay.set_shader_parameter('color', Color.LIGHT_GREEN)
+	$Rig/Skeleton3D/Godette_Body.material_overlay.set_shader_parameter('alpha', value)
+
+func hit_tween() -> void:
+	var tween = create_tween()
+	tween.tween_method(hit_effect, 0.0, 0.5, 0.3)
+	tween.tween_method(hit_effect, 0.5, 0.0, 0.1)
+
+func hit_effect(value: float) -> void:
+	$Rig/Skeleton3D/Godette_Body.material_overlay.set_shader_parameter('color', Color.LIGHT_CORAL)
+	$Rig/Skeleton3D/Godette_Body.material_overlay.set_shader_parameter('alpha', value)

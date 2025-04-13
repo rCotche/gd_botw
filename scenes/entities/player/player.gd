@@ -198,6 +198,7 @@ func shoot_magic(pos: Vector3) ->void:
 		cast_spell.emit('fireball', pos, last_movement_input, 1.0)
 	if current_spell == spells.HEAL:
 		health += 1
+		skin.heal_tween()
 	#match current_spell:
 		#spells.FIREBALL:
 			#cast_spell.emit('fireball', pos, last_movement_input, 1.0)
