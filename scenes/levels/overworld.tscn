@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lmmitd6y842u"]
+[gd_scene load_steps=33 format=3 uid="uid://lmmitd6y842u"]
 
 [ext_resource type="PackedScene" uid="uid://2tsqexqlhs7u" path="res://scenes/levels/level.tscn" id="1_diwh1"]
 [ext_resource type="Script" path="res://scenes/levels/overworld.gd" id="2_mfqma"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dwjrrhoj6ltyx" path="res://graphics/environment/castle.blend" id="4_h4e08"]
 [ext_resource type="PackedScene" uid="uid://cihqfmapbx5jq" path="res://scenes/entities/enemies/skeleton_warrior.tscn" id="5_g4ex5"]
 [ext_resource type="PackedScene" uid="uid://d2c5tm13ygykc" path="res://scenes/vfx/water.tscn" id="9_fmfjp"]
+[ext_resource type="AudioStream" uid="uid://cvq05fj2rym4b" path="res://audio/stream.mp3" id="10_ilepq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="11_lrqth"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="12_3e4lu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="13_16njx"]
@@ -65,7 +66,7 @@ point_count = 7
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qyok"]
 size = Vector3(3.11087, 3.20337, 0.796234)
 
-[sub_resource type="Resource" id="Resource_r8fjg"]
+[sub_resource type="Resource" id="Resource_pyaje"]
 script = ExtResource("14_q0smk")
 amount = 1000
 enabled = true
@@ -74,7 +75,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_xecf0"]
+[sub_resource type="Resource" id="Resource_cpbso"]
 script = ExtResource("15_ndp2a")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -85,7 +86,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_8u4kb"]
+[sub_resource type="Resource" id="Resource_b1ioo"]
 script = ExtResource("16_lk7ps")
 iterations = 3
 offset_step = 0.2
@@ -97,7 +98,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_iyqff"]
+[sub_resource type="Resource" id="Resource_8ro74"]
 script = ExtResource("17_jh16u")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -113,9 +114,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_e371g"]
+[sub_resource type="Resource" id="Resource_yg76w"]
 script = ExtResource("12_3e4lu")
-stack = Array[ExtResource("13_16njx")]([SubResource("Resource_r8fjg"), SubResource("Resource_xecf0"), SubResource("Resource_8u4kb"), SubResource("Resource_iyqff")])
+stack = Array[ExtResource("13_16njx")]([SubResource("Resource_pyaje"), SubResource("Resource_cpbso"), SubResource("Resource_b1ioo"), SubResource("Resource_8ro74")])
 
 [sub_resource type="Resource" id="Resource_g8bsm"]
 script = ExtResource("20_gpsrr")
@@ -136,14 +137,14 @@ shadow_opacity = 0.9
 shadow_blur = 4.5
 
 [node name="Player" parent="Entities" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.237, -32.9188, 285.227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.9876, -35.2213, 178.165)
 
 [node name="Path3D" type="Path3D" parent="Entities" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3264, 49.4477, -182.347)
 curve = SubResource("Curve3D_7rm46")
 
 [node name="Bird" parent="Entities/Path3D" index="0" instance=ExtResource("2_tn1h7")]
-transform = Transform3D(-0.0724303, -0.00182977, 0.997369, 0, 0.999998, 0.00183458, -0.997374, 0.00013288, -0.0724299, -56.6598, -8.15567, 169.097)
+transform = Transform3D(-0.0724303, -0.00182977, 0.997368, 0, 0.999998, 0.00183458, -0.997374, 0.00013288, -0.0724299, -56.6598, -8.15567, 169.097)
 use_model_front = true
 
 [node name="Skeleton_mage" parent="Entities" index="2" instance=ExtResource("4_c8srf")]
@@ -172,12 +173,17 @@ shape = SubResource("BoxShape3D_3qyok")
 [node name="Water" parent="Environment" index="4" instance=ExtResource("9_fmfjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.5999, 208.812)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Environment/Water" index="0"]
+stream = ExtResource("10_ilepq")
+autoplay = true
+max_distance = 40.0
+
 [node name="Grass" type="Node3D" parent="Environment" index="5"]
 
 [node name="ProtonScatter" type="Node3D" parent="Environment/Grass" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57672, 14.5381, -81.4647)
 script = ExtResource("11_lrqth")
-modifier_stack = SubResource("Resource_e371g")
+modifier_stack = SubResource("Resource_yg76w")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

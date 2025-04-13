@@ -60,9 +60,9 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 
 func hit() -> void:
 	if not $Timers/InvulTimer.time_left:
-		print("boss was hit")
 		$Timers/InvulTimer.start()
 		health -= 1
+		hit_tween()
 
 func can_dameg(value: bool) -> void:
 	can_damage_toggle = value
@@ -78,3 +78,12 @@ func shoot_fireball_boss() -> void:
 	var dir_2d = Vector2(direction.x, direction.z)
 	var pos = $skin/Rig/Skeleton3D/Nagonford_Axe/Nagonford_Axe/Marker3D.global_position
 	cast_spell.emit('fireball', pos, dir_2d, 3.0)
+
+func hit_tween() -> void:
+	var tween = create_tween()
+	tween.tween_method(hit_effect, 0.0, 0.5, 0.3)
+	tween.tween_method(hit_effect, 0.5, 0.0, 0.1)
+
+func hit_effect(value: float) -> void:
+	$skin/Rig/Skeleton3D/Nagonford_Body.material_overlay.set_shader_parameter('color', Color.LIGHT_CORAL)
+	$skin/Rig/Skeleton3D/Nagonford_Body.material_overlay.set_shader_parameter('alpha', value)

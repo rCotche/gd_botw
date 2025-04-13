@@ -846,3 +846,13 @@ en bas au niveau du terminal (editeur de shader tab selected)
 ============
 
 test.tres == godette_overlay.tres, godot bugged
+
+============
+
+audiostreamplayer node > inspector > Stream > drang n drop audio file
+puis
+audiostreamplayer node > inspector > autoplay enable
+puis
+audiostreamplayer node > inspector > max distance
+
+au niveau de la tab scene > aller à la tab import > loop enable > reimport
