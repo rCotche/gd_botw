@@ -780,3 +780,7 @@ puis
 meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > Wind sampler > click on > noise > new fastnoiselite > click on
 puis
 (fastnoiselite) > fractal > octave = 1
+
+============
+
+project > project settings > globals > shader global tab > player_position de type vec3 > add
