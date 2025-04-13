@@ -827,3 +827,8 @@ puis
 meshinstance > inspector > geometry > material override > click on > shader > click on > shader parameters > gradient sample > new gradient texture 1d > click on
 puis
 (gradienttexture1d) > gradient > click on 
+
+
+nouveau node meshinstance > inspector > mesh > sphere mesh > click on > material > new stadanrd material > clicik on > albedo > color
+puis
+meshinstance > inspector > mesh > click on > emission enable > emission 

@@ -21,7 +21,11 @@ void fragment() {
 	vec3 fresnel_color = vec3(0.1, 0.9, 0.0);
 	EMISSION = gradient + step(0.25, fresnel_glow(4, 4.5, fresnel_color, NORMAL, VIEW));
 	//EMISSION = gradient + step(0.25, fresnel(2.0, NORMAL, VIEW)* gradient);
+	
+	//
 	//plus on est vers la droite plus la valeur de : noise - UV.y est bas
 	//donc the cutoof point will be lower
 	ALPHA = step(-0.15, noise - UV.y);
+	//
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
 }
