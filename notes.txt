@@ -831,4 +831,18 @@ puis
 
 nouveau node meshinstance > inspector > mesh > sphere mesh > click on > material > new stadanrd material > clicik on > albedo > color
 puis
-meshinstance > inspector > mesh > click on > emission enable > emission 
+meshinstance > inspector > mesh > click on > emission enable > emission
+
+============
+
+player scene
+
+meshinstance (godette body .eg) > inspector > geometry > material overlay > new shadermaterial > shader > new shader > shader (norrmal codebase) > create
+puis
+meshinstance > inspector > geometry > material override > click on > shader > click on
+puis
+en bas au niveau du terminal (editeur de shader tab selected)
+
+============
+
+test.tres == godette_overlay.tres, godot bugged

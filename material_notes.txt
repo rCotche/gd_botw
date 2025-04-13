@@ -1,0 +1,60 @@
+En Godot 4, plusieurs mécanismes permettent de modifier ou d’ajouter des matériaux sur des géométries. Les trois notions se distinguent ainsi :
+
+---
+
+### 1. Material Override
+
+- **Définition :**  
+  La propriété **material override** (propriété que vous trouverez notamment sur un nœud MeshInstance3D ou dans les CSGs) permet de remplacer complètement, pour l’ensemble de la géométrie, les matériaux définis dans l’asset de base.  
+- **Utilisation :**  
+  - **Remplacement global :** Lorsque vous voulez que toutes les surfaces d’un maillage utilisent un seul et même matériau, en ignorant les matériaux d’origine.  
+  - **Cas d’usage :** Par exemple, pour uniformiser l’aspect d’un objet en fonction d’un thème (changer la teinte d’un bâtiment pour la nuit) ou pour appliquer un shader spécifique à l’ensemble de la géométrie.
+- **Bonnes pratiques :**  
+  Utilisez-le quand vous avez besoin d’un contrôle global sur le rendu du maillage sans conserver les matériaux définis par ailleurs.
+
+---
+
+### 2. Surface Material Override
+
+- **Définition :**  
+  La notion de **surface material override** se réfère à l’override qui se fait au niveau de la surface ou du sous-matériau dans un maillage possédant plusieurs matériaux (chaque surface d’un maillage peut avoir son propre matériau).  
+- **Utilisation :**  
+  - **Override ciblé :** Quand vous souhaitez remplacer uniquement certains matériaux sur des surfaces spécifiques d’un objet.  
+  - **Cas d’usage :** Par exemple, si vous avez un personnage avec plusieurs parties de matériau (peau, vêtements) et que vous voulez changer uniquement le matériau de la peau sans toucher aux vêtements.
+- **Bonnes pratiques :**  
+  Utilisez cette approche pour des modifications locales (au niveau d’une surface) plutôt qu’un remplacement global, ce qui permet de conserver la diversité visuelle de l’objet tout en modifiant des parties spécifiques.
+
+---
+
+### 3. Material Overlay
+
+- **Définition :**  
+  Le **material overlay** consiste à ajouter une couche additionnelle au matériau d’origine sans le remplacer complètement. Cette approche permet de combiner le matériau de base avec des effets ou des modifications (comme des dégradés, des détails supplémentaires ou des corrections colorimétriques) via une superposition.
+- **Utilisation :**  
+  - **Effets additionnels :** Quand vous souhaitez enrichir l’apparence d’un matériau existant en y ajoutant, par exemple, une texture de saleté, un effet de réflexion supplémentaire ou d’autres ajustements graphiques.  
+  - **Cas d’usage :** Par exemple, dans un environnement où vous voulez simuler l’usure d’un mur ou ajouter des reflets sans changer le shader de base.
+- **Bonnes pratiques :**  
+  La superposition est idéale quand vous voulez conserver le comportement du matériau original tout en y appliquant des effets visuels additionnels. Elle permet de faire évoluer l’aspect sans toucher au contenu de base.
+
+---
+
+### Quand les utiliser ?
+
+- **Material Override :**  
+  Utilisez-le lorsque le besoin est de **remplacer entièrement** le matériau d’un objet pour obtenir un rendu cohérent ou pour appliquer un shader spécialisé sur l’ensemble du maillage.  
+  *Exemple :* Un objet qui doit passer d’un état normal à un état "enflammé" où tous les matériaux doivent afficher un effet de feu.
+
+- **Surface Material Override :**  
+  Utilisez-le pour **cibler certaines surfaces** d’un objet ayant plusieurs matériaux.  
+  *Exemple :* Modifier uniquement la surface d’un véhicule (comme la carrosserie) tout en laissant intact l’intérieur ou les détails des roues.
+
+- **Material Overlay :**  
+  Adoptez cette approche pour **ajouter des effets** au matériau existant sans le remplacer, afin de conserver l’aspect original tout en enrichissant ses détails visuels.  
+  *Exemple :* Appliquer une texture d’usure ou un léger effet de brillance sur un matériau déjà en place, permettant ainsi des variations sans perdre la base de rendu.
+
+---
+
+En résumé, la bonne pratique consiste à choisir le mécanisme qui correspond le mieux à la granularité de l’effet désiré :  
+- **Override global pour un changement complet,**  
+- **Override de surface pour des modifications ciblées,**  
+- **Overlay pour enrichir sans supprimer le matériau de base.**
